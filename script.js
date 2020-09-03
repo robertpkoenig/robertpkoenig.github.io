@@ -59,7 +59,7 @@ class Piece {
     }
 }
 
-ledge = new Piece(200, 300, 80, 10, 0, 0, "black", true);
+ledge = new Piece(200, 300, 80, 10, 0, 0, "black", false);
 bluePiece = new Piece(50, 390, 10, 10, 0, 0, "blue", true);
 
 // Drawing function called on each loop
@@ -68,17 +68,17 @@ canvasDraw = function() {
         for (i = 0 ; i < pieces.length ; i++) {
             piece = pieces[i];
             piece.draw();
-            // if (piece.moveable && piece.sy > 0 && piece.y <= ledge.y + 10 && piece.y >= ledge.y - 10 && piece.x >= ledge.x && piece.x <= ledge.x+ledge.w) {
-            //     piece.y = ledge.y-10;
-            //     piece.base = ledge.y-10;
-            //     piece.sy = 0;
-            //     console.log("tiggered1");
-            // }
-            // document.getElementById("info").innerHTML = "piece.x: " + piece.x + " ledge.x: " + ledge.x;
-            // if (piece.moveable && (piece.x <= ledge.x || piece.x >= ledge.x+ledge.w)) {
-            //     piece.base = 390;
-            //     console.log("tiggered2");
-            // }
+            if (piece.moveable && piece.sy > 0 && piece.y <= ledge.y + 10 && piece.y >= ledge.y - 10 && piece.x >= ledge.x && piece.x <= ledge.x+ledge.w) {
+                piece.y = ledge.y-10;
+                piece.base = ledge.y-10;
+                piece.sy = 0;
+                console.log("tiggered1");
+            }
+            document.getElementById("info").innerHTML = "piece.x: " + piece.x + " ledge.x: " + ledge.x;
+            if (piece.moveable && (piece.x <= ledge.x || piece.x >= ledge.x+ledge.w)) {
+                piece.base = 390;
+                console.log("tiggered2");
+            }
         }
 }
 
