@@ -3,15 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Rob's Christmas Crackers</title>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit-icons.min.js"></script>
 </head>
-<body style="padding: 0px; margin: 0px">
-    <div>
-    <canvas id="canvas" width="400" height="400" style="border: 1px solid black"></canvas>
+<body>
+    <div class="background">
+        <div class="parent">
+            <h1>Rob's Christmas Crackers</h1>
+            <ul uk-accordion>
+                <li>
+                    <a class="uk-accordion-title" href="#">
+                        Why couldn’t the rose bush make cookies in December?
+                    </a>
+                    <div class="uk-accordion-content">No more flour!</div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title" href="#">
+                        What does the Nutcracker use to hold up his roof?
+                    </a>
+                    <div class="uk-accordion-content">Walnuts!</div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title" href="#">
+                        What did the attorney write into his Christmas contract?
+                    </a>
+                    <div class="uk-accordion-content">A Santa clause</div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title" href="#">
+                        What did Aquaman hang on his door for Christmas?
+                    </a>
+                    <div class="uk-accordion-content">A coral wreath!</div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title" href="#">
+                        Why did the snowman have trouble making friends?
+                    </a>
+                    <div class="uk-accordion-content">He was Frosty!</div>
+                </li>
+            </ul>
+        </div>
     </div>
-    <button style="height: 40px; width: 100px" onClick="start()">Start</button>
-    <p id="info">not changed yet</p>
-    <script src="script.js"></script>
 </body>
 </html>
