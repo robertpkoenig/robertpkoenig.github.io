@@ -1,9 +1,14 @@
+.background {
+    margin: auto;
+    max-width: 540px;
+}
+
 .parent {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 2px 5px 5px #ddd;
-    margin: auto;
+    margin: 10px;
     margin-top: 50px;
     max-width: 500px;
 }
