@@ -1,0 +1,20 @@
+.parent {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px 5px #ddd;
+    margin: auto;
+    margin-top: 50px;
+    max-width: 500px;
+}
+
+h1 {
+    color: green;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid silver;
+}
+
+li {
+    padding: 5px;
+}
