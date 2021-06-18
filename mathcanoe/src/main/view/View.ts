@@ -78,28 +78,35 @@ class View {
         this.p5.push()
 
             this.p5.noFill()
-            this.p5.strokeWeight(Constants.riverWidth + 10)
+            this.p5.strokeWeight(Constants.sandBankWidth)
             this.p5.stroke(194, 178, 128)
 
-            this.p5.beginShape();
+            this.p5.beginShape()
 
-            for (const point of this.model.river.leftBankSand) {
-                this.p5.curveVertex(point.x, point.y)
-            }
+                for (const point of this.model.river.leftBankSand) {
+                    this.p5.curveVertex(point.x, point.y)
+                }
 
-            this.p5.endShape();
+            this.p5.endShape()
+
+            this.p5.beginShape()
+
+                for (const point of this.model.river.rightBankSand) {
+                    this.p5.curveVertex(point.x, point.y)
+                }
+
+            this.p5.endShape()
 
             this.p5.strokeWeight(Constants.riverWidth)
             this.p5.stroke(31, 206, 150)
             
-            this.p5.beginShape();
+            this.p5.beginShape()
 
                 for (const point of this.model.river.centerCoordinates) {
                     this.p5.curveVertex(point.x, point.y)
                 }
 
-            this.p5.endShape();
-
+            this.p5.endShape()
 
         this.p5.pop()
 

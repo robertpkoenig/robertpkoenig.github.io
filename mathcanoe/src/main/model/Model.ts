@@ -9,16 +9,18 @@ import { RockManager } from "./managers/RockManager"
 import { Timer } from "./managers/Timer"
 import { River } from "./classes/River"
 import { EventManager } from "./managers/EventManager"
+import SceneManager from "./managers/SceneManager"
 
 
 class Model {
 
     canoe: Canoe
     river: River
+    sceneManager: SceneManager
+
     equationGenerator: EquationGenerator
     numberGenerator: NumberGenerator
     pointsManager: PointsManager
-    rockManager: RockManager
     controller: Controller
     collisionDetector: CollisionDetector
     timer: Timer
@@ -31,12 +33,14 @@ class Model {
     instructionsVisible: boolean
 
     constructor(p5: p5) {
+
         this.canoe = new Canoe()
         this.river = new River(this.canoe)
+        this.sceneManager = new SceneManager(this, p5)
+
         this.equationGenerator = new EquationGenerator()
         this.numberGenerator = new NumberGenerator(this.equationGenerator, this.river, this.canoe)
         this.pointsManager = new PointsManager(this.equationGenerator, this.numberGenerator)
-        this.rockManager = new RockManager(this.river, this.canoe)
         this.collisionDetector = new CollisionDetector(this)
         this.timer = new Timer(p5)
         this.eventManager = new EventManager(this)
@@ -50,6 +54,7 @@ class Model {
         this.generateInitialRiverBanks()
         this.setupCanoe()
         this.equationGenerator.generateAndSetEquation()
+
     }
 
     generateInitialRiverBanks() {

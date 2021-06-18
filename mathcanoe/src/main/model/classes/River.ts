@@ -64,13 +64,16 @@ class River {
 
     initializeLeftBankWaves() {
         this.leftBankWaves = []
-        this.leftBankWaves.push(new Wave(5, 200, Math.random() * 200))
-        this.leftBankWaves.push(new Wave(5, 200, Math.random() * 200))
-        this.leftBankWaves.push(new Wave(2, 50, Math.random() * 5))
+        this.leftBankWaves.push(new Wave(10, 1000, Math.random() * 1000))
+        this.leftBankWaves.push(new Wave(10, 1000, Math.random() * 1000))
+        this.leftBankWaves.push(new Wave(5, 500, Math.random() * 500))
     }
 
     initializeRightBankWaves() {
-
+        this.rightBankWaves = []
+        this.rightBankWaves.push(new Wave(10, 1000, Math.random() * 1000))
+        this.rightBankWaves.push(new Wave(10, 1000, Math.random() * 1000))
+        this.rightBankWaves.push(new Wave(5, 500, Math.random() * 500))
     }
 
     generateInitialBankPoint() {
@@ -116,38 +119,37 @@ class River {
 
             const centerXChange = prevCenterCoordinate.x - newCenterCoordinate.x
             const centerYChange = prevCenterCoordinate.y - newCenterCoordinate.y
-            const hypotenuse = Math.sqrt((centerXChange * centerXChange) + (centerYChange * centerYChange));
-            const positionMultiplier = (Constants.riverWidth / 2) / hypotenuse;
+            const hypotenuse = Math.sqrt((centerXChange * centerXChange) + (centerYChange * centerYChange))
+            const positionMultiplier = (Constants.riverWidth / 2) / hypotenuse
 
             // multiply the centerRise by position multiplier to get the increase in left bank x position
-            const newLeftBankCoordinateX = (newCenterCoordinate.x + (centerYChange * positionMultiplier));
-            const newLeftBankCoordinateY = (newCenterCoordinate.y - (centerXChange * positionMultiplier));
-            const newLeftBankCoordinate = new Vector(newLeftBankCoordinateX, newLeftBankCoordinateY);
-            this.leftBank.addFirst(newLeftBankCoordinate);
+            const newLeftBankCoordinateX = (newCenterCoordinate.x + (centerYChange * positionMultiplier))
+            const newLeftBankCoordinateY = (newCenterCoordinate.y - (centerXChange * positionMultiplier))
+            const newLeftBankCoordinate = new Vector(newLeftBankCoordinateX, newLeftBankCoordinateY)
+            this.leftBank.addFirst(newLeftBankCoordinate)
+
+            const newLeftBankSandCoordinate = newLeftBankCoordinate.clone()
+            newLeftBankSandCoordinate.x += this.generateNewLeftBankOffset()
+            this.leftBankSand.addFirst(newLeftBankSandCoordinate)
 
             // multiply the centerRise by position multiplier to get the increase in left bank x position
-            const newRightBankCoordinateX = (newCenterCoordinate.x - (centerYChange * positionMultiplier));
-            const newRightBankCoordinateY = (newCenterCoordinate.y + (centerXChange * positionMultiplier));
-            const newRightBankCoordinate = new Vector(newRightBankCoordinateX, newRightBankCoordinateY);
-            this.rightBank.addFirst(newRightBankCoordinate);
+            const newRightBankCoordinateX = (newCenterCoordinate.x - (centerYChange * positionMultiplier))
+            const newRightBankCoordinateY = (newCenterCoordinate.y + (centerXChange * positionMultiplier))
+            const newRightBankCoordinate = new Vector(newRightBankCoordinateX, newRightBankCoordinateY)
+            this.rightBank.addFirst(newRightBankCoordinate)
 
-            // multiply the centerRise by position multiplier to get the increase in left bank x position
-            // const leftBankSandOffset = this.generateNewLeftBankOffset()
-            // const newLeftBankSandCoordinateX = 
-            //     (newCenterCoordinate.x + (centerYChange * leftBankSandOffset));
-            // const newLeftBankSandCoordinateY =
-            //     (newCenterCoordinate.y - (centerXChange * leftBankSandOffset));
-            // const newLeftBankSandCoordinate = new Vector(newLeftBankSandCoordinateX, newLeftBankSandCoordinateY);
-            // this.leftBankSand.addFirst(newLeftBankSandCoordinate);
+            const newRightBankSandCoordinate = newRightBankCoordinate.clone()
+            newRightBankSandCoordinate.x += this.generateNewLeftBankOffset()
+            this.rightBankSand.addFirst(newRightBankSandCoordinate)
             
-            this.addNewVelocityToList(centerXChange, centerYChange, hypotenuse);
+            this.addNewVelocityToList(centerXChange, centerYChange, hypotenuse)
 
             if (this.leftBankCollisionHead != null) this.updateCollisionHeads()
-            this.bankLength += Constants.centerPointYGap;
+            this.bankLength += Constants.centerPointYGap
             // Because of y axis going down, bank length grows negatively
             // this.bankLength -= Constants.centerPointYGap;
             
-            this.bankAdditionIncrement += Constants.flowRate;
+            this.bankAdditionIncrement += Constants.flowRate
     }
 
     addNewVelocityToList(centerXChange: number, centerYChange: number, hypotenuse: number) {
@@ -178,11 +180,19 @@ class River {
     }
 
     generateNewLeftBankOffset(): number {
-        let leftBankSandXOffset = -100
+        let leftBankSandXOffset = 0
         for (const wave of this.leftBankWaves) {
             leftBankSandXOffset += wave.getX(this.bankLength);
         }
         return leftBankSandXOffset
+    }
+
+    generateNewRightBankOffset(): number {
+        let rightBankSandXOffset = 0
+        for (const wave of this.rightBankWaves) {
+            rightBankSandXOffset += wave.getX(this.bankLength);
+        }
+        return rightBankSandXOffset
     }
 
     pruneBanks() {
@@ -205,7 +215,6 @@ class River {
 
     }
 
-
     updateCollisionHeads() {
 
         while (this.leftBankCollisionHead.value.y > this.collisionHeadHeight) {
@@ -216,24 +225,30 @@ class River {
             this.rightBankCollisionHead = this.rightBankCollisionHead.prev
         }
 
-
-        // this.rightBankCollisionHead = this.rightBankCollisionHead.prev
     }
 
     applyPhysics() {
         this.xOffset -= this.canoe.velocity.x
 
-        for (const leftBankCoordinate of this.rightBank) {
-            leftBankCoordinate.y += this.canoe.velocity.y;
-            leftBankCoordinate.x -= this.canoe.velocity.x
-        }
-        for (const rightBankCoordinate of this.leftBank) {
+        for (const rightBankCoordinate of this.rightBank) {
             rightBankCoordinate.y += this.canoe.velocity.y;
             rightBankCoordinate.x -= this.canoe.velocity.x
+        }
+        for (const leftBankCoordinate of this.leftBank) {
+            leftBankCoordinate.y += this.canoe.velocity.y;
+            leftBankCoordinate.x -= this.canoe.velocity.x
         }
         for (const riverCenterCoordinate of this.centerCoordinates) {
             riverCenterCoordinate.y += this.canoe.velocity.y;
             riverCenterCoordinate.x -= this.canoe.velocity.x
+        }
+        for (const leftBankSandCoordinate of this.leftBankSand) {
+            leftBankSandCoordinate.y += this.canoe.velocity.y;
+            leftBankSandCoordinate.x -= this.canoe.velocity.x
+        }
+        for (const rightBankSandCoordinate of this.rightBankSand) {
+            rightBankSandCoordinate.y += this.canoe.velocity.y;
+            rightBankSandCoordinate.x -= this.canoe.velocity.x
         }
     }
 
@@ -246,6 +261,12 @@ class River {
         }
         for (const riverCenterCoordinate of this.centerCoordinates) {
             riverCenterCoordinate.x -= xOffset
+        }
+        for (const leftBankSandCoordinate of this.leftBankSand) {
+            leftBankSandCoordinate.x -= xOffset
+        }
+        for (const rightBankSandCoordinate of this.rightBankSand) {
+            rightBankSandCoordinate.x -= xOffset
         }
     }
 
