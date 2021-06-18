@@ -9,14 +9,13 @@ import { RockManager } from "./managers/RockManager"
 import { Timer } from "./managers/Timer"
 import { River } from "./classes/River"
 import { EventManager } from "./managers/EventManager"
-import SceneManager from "./managers/SceneManager"
+import GrassManager from "./managers/GrassManager"
 
 
 class Model {
 
     canoe: Canoe
     river: River
-    sceneManager: SceneManager
 
     equationGenerator: EquationGenerator
     numberGenerator: NumberGenerator
@@ -36,7 +35,6 @@ class Model {
 
         this.canoe = new Canoe()
         this.river = new River(this.canoe)
-        this.sceneManager = new SceneManager(this, p5)
 
         this.equationGenerator = new EquationGenerator()
         this.numberGenerator = new NumberGenerator(this.equationGenerator, this.river, this.canoe)
@@ -51,21 +49,23 @@ class Model {
         this.crashed = false
         this.instructionsVisible = true
 
-        this.generateInitialRiverBanks()
+        this.generateInitialScene()
         this.setupCanoe()
         this.equationGenerator.generateAndSetEquation()
 
     }
 
-    generateInitialRiverBanks() {
+    generateInitialScene() {
 
         this.river.generateInitialBankPoint()
 
         // Temporarily set canoe velocity to dummy rate
         this.canoe.velocity.y = Constants.flowRate
         while(this.river.bankLength < window.innerHeight + Constants.verticalOffset * 2) {
+
             this.river.applyPhysics()
             this.river.manageBanks()
+
         }
 
         this.river.leftBankCollisionHead = this.river.getInitialCollisionHead(this.river.leftBank)
@@ -98,7 +98,7 @@ class Model {
         this.numberGenerator.applyPhysics()
 
         this.canoe.applyPhysics()
-        
+      
     }
 
 }

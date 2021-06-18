@@ -7,9 +7,12 @@ class Controller {
     model: Model
     p5: p5
 
+    introState: number
+
     constructor(p5: p5, model: Model) {
         this.model = model
         this.p5 = p5
+        this.introState = 0
     }
 
     routeKeyPress(key: string) {
@@ -55,14 +58,24 @@ class Controller {
 
     handleSpacePress(): void {
 
-        if (!this.model.started) {
-            this.model.started = true
-            this.model.ongoing = true
-            this.model.timer.start()      
+        this.introState++
+
+        if (this.introState > 2) return
+
+        if (this.introState == 1) {
+            this.p5.select("#popup").style("visibility: hidden")
+            this.p5.select("#arrow-key-instructions").style("visibility: visible")
         }
 
-        this.p5.select("#popup").style("visibility: hidden")
-        this.p5.select("#arrow-key-instructions").style("visibility: visible")
+        if (this.introState == 2) {
+
+            this.p5.select("#arrow-key-instructions").style("visibility: hidden")
+
+            this.model.started = true
+            this.model.ongoing = true
+            this.model.timer.start() 
+
+        }
 
     }
 

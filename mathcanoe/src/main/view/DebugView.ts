@@ -13,8 +13,6 @@ class DebugView {
 
     render() {
         this.drawVelocityHeadNode()
-        this.drawRockPolygons()
-        this.drawRockPolygons()
         this.drawCenterCoordinates()
         this.drawCanoePolygon()
         this.drawLeftPaddlePolygon()
@@ -33,15 +31,15 @@ class DebugView {
                         this.model.river.velocityNodeAtCanoePosition.value.y + 100, 10, 10)
     }
 
-    drawRockPolygons() {
-        for (const rock of this.model.rockManager.rocks) {
-            this.p5.beginShape()
-            for (const point of rock.box.points) {
-                this.p5.vertex(point.x + 50, point.y + 50)
-            }
-            this.p5.endShape(this.p5.CLOSE)
-        }
-    }
+    // drawRockPolygons() {
+    //     for (const rock of this.model.rockManager.rocks) {
+    //         this.p5.beginShape()
+    //         for (const point of rock.box.points) {
+    //             this.p5.vertex(point.x + 50, point.y + 50)
+    //         }
+    //         this.p5.endShape(this.p5.CLOSE)
+    //     }
+    // }
 
     drawCenterCoordinates() {
         for (const centerCoordinate of this.model.river.centerCoordinates) {

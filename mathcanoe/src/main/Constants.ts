@@ -4,6 +4,7 @@ class Constants  {
     public static flowRate = 2
     public static verticalOffset = 400
     public static centerPointYGap = 5
+    public static sandBankWidth = 80
 
     public static canoeSize = 100
     public static canoeInertia = 0.6
@@ -13,6 +14,8 @@ class Constants  {
     public static rightPaddleForce = 0.5
     public static forwardPaddleForce = 2
     public static backwardPaddleForce = -2
+
+    public static GRASS_GAP = 100
 
     public static rockWidthAndHeight = 20
 

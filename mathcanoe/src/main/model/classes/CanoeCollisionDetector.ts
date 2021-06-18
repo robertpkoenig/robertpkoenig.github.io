@@ -53,12 +53,12 @@ class CollisionDetector {
             currRightNode = currRightNode.next
         }
 
-        for (const rock of this.model.rockManager.rocks) {
-            if (SAT.testPolygonPolygon(this.model.canoe.polygon, rock.box)) {
-                // console.log("rockHit");
-                return true
-            }
-        }
+        // for (const rock of this.model.rockManager.rocks) {
+        //     if (SAT.testPolygonPolygon(this.model.canoe.polygon, rock.box)) {
+        //         // console.log("rockHit");
+        //         return true
+        //     }
+        // }
 
         return false
     }
