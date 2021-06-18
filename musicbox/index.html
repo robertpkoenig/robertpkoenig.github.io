@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Box</title>
+    <link rel="shortcut icon" type="image/png" href="./images/favicon.png"/>
+
+    <link rel="stylesheet" href="./styles/controls.css">
+    <link rel="stylesheet" href="./styles/toggle.css">
+    <link rel="stylesheet" href="./styles/slider.css">
+    <link rel="stylesheet" href="./styles/tooltip.css">
+
+    <link href="./libraries/feather/feather.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.min.js"></script>
+
+    <script src="./src/model/clock.js"></script>
+    <script src="./src/model/sound.js"></script>
+    <script src="./src/model/song.js"></script>
+    <script src="./src/model/hit.js"></script>
+    <script src="./src/model/helper/wrap-around-counter.js"></script>
+    <script src="./src/model/constants.js"></script>
+
+    <script src="./src/view/visualizer.js"></script>
+    <script src="./src/view/name-level-map.js"></script>
+    <script src="./src/view/level-color-map.js"></script>
+
+    <script src="./src/controller/sample-player.js"></script>
+    <script src="./src/controller/keyboard.js"></script>
+    <script src="./src/controller/player.js"></script>
+    <script src="./src/controller/recorder.js"></script>
+    <script src="./src/controller/metronome.js"></script>
+    <script src="./src/controller/ui-controls.js"></script>
+    <script src="./src/controller/loadExample.js"></script>
+    <script src="./src/controller/popup-control.js"></script>
+
+    <script src="./src/index.js"></script>  
+
+</head>
+
+<body>
+    
+    <!-- Including this prevents P5 showing a default loading screen. -->
+    <div id="p5_loading" class="loadingclass">
+    </div>
+
+    <!-- Loading screen which is hidden upon startup -->
+    <div id="loading_screen">
+        <img src="./images/loader.gif" alt="loading image" id="loading_image">
+        works best in Chrome
+    </div>
+
+    <!-- Visibility is set to visible upon page load -->
+    <div id="app" style="visibility: hidden">
+
+        <!-- The control panel on the left of the screen -->
+        <div id="controls">
+            
+            <!-- metronome -->
+            <div class="panel metronome">
+                <h3>Metronome</h3>
+                <div id="metronome-state">Off</div>
+                <label class="switch">
+                    <input onClick="toggleMetronome()" type="checkbox" id="toggle" unchecked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <!-- tempo panel -->
+            <!-- There is an unknown problem with changing frameRate in WEBGL -->
+            <!-- This meant that changing tempo was next to impossible -->
+            <!-- <div class="panel tempo full-width">
+                <h3>Tempo</h3>
+                <input type="range" min="25" max="40" value="32" id="tempo-slider">
+            </div> -->
+
+            <!-- Clear and undo control -->
+            <div class="panel editing">
+                <h3>Editing</h3>
+                <button id="undo" onClick="song.undo()" class="tooltip">
+                    <span class="tooltiptext">Undo</span>
+                    <i style="font-size: 13px;" class="feather-rotate-ccw"></i>
+                </button>
+                <button id="restart" onClick="song.reset()" class="tooltip">
+                    <span class="tooltiptext">Restart</span>
+                    <i style="font-size: 13px;" class="feather-trash"></i>
+                </button>
+            </div>
+
+            <!-- List of sounds -->
+            <div class="panel sounds">
+                <h3>Sounds</h3>
+
+                <!-- Percussion -->
+                <div class="sound-section-title">
+                    Percussion
+                </div>
+
+                <div class="sound-table">
+                    <div class="sound">
+                        <div class="sound-name">Kick</div>
+                        <div class="key">Space</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Snare</div>
+                        <div class="key">G</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Hat</div>
+                        <div class="key">H</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Snap</div>
+                        <div class="key">F</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Clave</div>
+                        <div class="key">D</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Cymbal</div>
+                        <div class="key">J</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Tom</div>
+                        <div class="key">S</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Tom</div>
+                        <div class="key">A</div>
+                    </div>
+                    
+                </div>
+
+                <!-- Guitar -->
+                <div class="sound-section-title">
+                    Guitar
+                </div>
+
+                <div class="sound-table">
+                    <div class="sound">
+                        <div class="sound-name">Pluck</div>
+                        <div class="key">Y</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Pluck</div>
+                        <div class="key">U</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Pluck</div>
+                        <div class="key">I</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Slide</div>
+                        <div class="key">O</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Slide</div>
+                        <div class="key">P</div>
+                    </div>
+                </div>
+
+                <!-- Keyboard -->
+                <div class="sound-section-title">
+                    Keyboard
+                </div>
+
+                <div class="sound-table">
+                    <div class="sound">
+                        <div class="sound-name">Chord</div>
+                        <div class="key">Q</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Chord</div>
+                        <div class="key">W</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Chord</div>
+                        <div class="key">E</div>
+                    </div>
+                </div>
+
+                <!-- Vocal -->
+                <div class="sound-section-title">
+                    Vocal
+                </div>
+
+                <div class="sound-table">
+                    <div class="sound">
+                        <div class="sound-name">Ugh</div>
+                        <div class="key">Z</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Yeah</div>
+                        <div class="key">X</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Agh</div>
+                        <div class="key">C</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Holdup</div>
+                        <div class="key">V</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Damn</div>
+                        <div class="key">B</div>
+                    </div>
+                    <div class="sound">
+                        <div class="sound-name">Air Horn</div>
+                        <div class="key">N</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Examples -->
+            <div class="panel examples">
+                <h3>Examples</h3>
+                <button onClick="loadExample(1)" class="tooltip">
+                1
+                </button>
+                <button onClick="loadExample(2)" class="tooltip">
+                2
+                </button>
+                <button onClick="loadExample(3)" class="tooltip">
+                3
+                </button>
+            </div>
+
+        </div>
+
+        <!-- P5 canvas where all action happens -->
+        <div id="canvas"></div>
+
+        <!-- Logo, name, and intro video button -->
+        <div id="right-panel">
+
+            <div>
+                <h1>MUSIC B<span style="color: blue;">O</span>X</h1>
+                <div id="author-name">by <a href="https://robertpkoenig.github.io/">Rob Koenig</a></div>
+            </div>
+
+            <div id="intro-button" onClick="showPopup()">
+                <i style="font-size: 18px;" class="feather-play-circle"></i>
+                <div style="font-size: 14px">Intro</div>
+            </div>
+
+        </div>
+
+        <!-- Intro video popup -->
+        <div id="video-popup" class="popup-parent" style="visibility: hidden">
+            
+            <div class="video-grid">
+
+                <div class="popup-item popup-close" style="border-radius: 15px;" onClick="hidePopup()">
+                    <i style="font-size: 16px;" class="feather-x"></i>
+                </div>
+
+                <div class="popup-item video">
+                    <iframe id="video-player" width="600" height="350" src="https://www.youtube.com/embed/Mf48F5YPWoA?modestbranding=1&enablejsapi=1&version=3&playerapiid=ytplayer" title="YouTube video player" style="border: none; border-radius: 10px" allow="autoplay" allowfullscreen></iframe>
+                </div>
+
+                <!-- dummy div for grid formatting -->
+                <div></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

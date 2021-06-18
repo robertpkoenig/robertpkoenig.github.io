@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Math Canoe</title>
+</head>
+<body>
+
+    <div id="canvas"></div>
+
+    <div class="flex column space-between full-page">
+
+        <div class="flex row space-between">
+
+            <div class="panel timer flex-column-even">
+                <div class="flex row center">Time Left</div>
+                <div class="flex row center bold large-font" id="time"></div>
+            </div>
+
+            <div id="arrow-key-instructions" class="panel flex column" style="visibility: hidden;">
+                <div class="flex row center" style="margin-bottom: 10px">Steer with arrow keys</div>
+                <img src="./assets/images/arrow-keys/arrow-keys.gif" alt="arrow keys">
+            </div>
+
+            <div class="panel score flex column">
+                <div class="flex row center">Score</div>
+                <div class="flex row center bold x-x-large-font" id="score">0</div>
+            </div>
+
+        </div>
+
+        <div class="flex row center">
+            <div class="panel equation flex center vcenter bold large-font">
+                <div id="equation"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="flex center vcenter full-page popup-background" id="popup">
+
+        <div class="panel flex column popup">
+
+            <div class="flex column center fun-font tilted" style="margin-bottom: 25px">
+                <span class="large-font">Math</span>
+                <span class="x-large-font">Canoe!</span>
+            </div>
+
+            <div class="medium-font bold flex center">
+                Press SPACE to start
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="bundle/bundle.js"></script>
+</html>

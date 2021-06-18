@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "outDir": "./bundle/",
+      "sourceMap": true,
+      "noImplicitAny": true,
+      "module": "AMD",
+      "esModuleInterop": true,
+      "target": "es5",
+      "allowJs": true,
+      "downlevelIteration": true,
+    },
+}

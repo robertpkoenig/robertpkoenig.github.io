@@ -1,0 +1,36 @@
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_rangeslider */
+
+#tempo-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: #eee;
+    outline: none;
+}
+
+#tempo-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
+    background: #aaa;
+    cursor: pointer;
+}
+
+#tempo-slider::-webkit-slider-thumb:hover {
+    background: blue;
+}
+
+#tempo-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: #aaa;
+    cursor: pointer;
+}
+
+#tempo-slider::-moz-range-thumb:hover {
+    background: blue;
+}

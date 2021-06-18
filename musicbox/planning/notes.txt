@@ -1,0 +1,22 @@
+references
+
+https://www.flaticon.com/free-icon/drums_2884469?related_id=2884469&origin=pack
+
+
+Note Position           Prop Through window.song       Box Angle       Cyl Angle       Total Angle
+0                       0                       0               0               0
+0.25                    0                       -1.57           0               -1.57
+0.5                     0                       -3.14           0               -3.14
+0.75                    0                       -4.7            0               -4.17
+1                       0                       -6.28           0               -6.28
+
+0                       0.25                    0               1.57            1.57
+0                       0.5                     0               3.14            3.14
+0                       0.75                    0               4.17            4.17
+0                       1                       0               6.28            6.28
+
+0.1                     0.9                     -0.6            5.64            5.02
+0.2                     0.1                     -1.2            0.62            -0.62
+0.05                    0.95                    -0.34           5.96            5.65   
+           
+
