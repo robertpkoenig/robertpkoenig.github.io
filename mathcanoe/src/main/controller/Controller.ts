@@ -58,23 +58,21 @@ class Controller {
 
     handleSpacePress(): void {
 
-        this.introState++
-
-        if (this.introState > 2) return
-
-        if (this.introState == 1) {
-            this.p5.select("#popup").style("visibility: hidden")
-            this.p5.select("#arrow-key-instructions").style("visibility: visible")
-        }
-
-        if (this.introState == 2) {
-
-            this.p5.select("#arrow-key-instructions").style("visibility: hidden")
-
+        if (!this.model.started) {
             this.model.started = true
             this.model.ongoing = true
-            this.model.timer.start() 
+            this.model.timer.start()
+            this.p5.select("#popup").style("visibility: hidden")
+            this.p5.select("#arrow-key-instructions").style("visibility: visible")  
+        }
 
+        if (this.model.ended && this.model.crashed) {
+            this.model.setup()
+            this.model.started = true
+            this.model.ongoing = true
+            this.model.timer.start()
+            document.getElementById("score").innerHTML = "0"
+            this.p5.select("#crash-screen").style("visibility: hidden")
         }
 
     }

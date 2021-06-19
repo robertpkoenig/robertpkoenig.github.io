@@ -3,6 +3,7 @@ import { Constants } from "../Constants"
 import { Vector } from "sat"
 import { Model } from "../model/Model"
 import { GrassBladeDirection } from '../model/classes/GrassBlade'
+import DebugView from './DebugView'
 
 class View {
 
@@ -12,10 +13,6 @@ class View {
     stationaryImage: p5.Image
     leftDipImage: p5.Image
     rightDipImage: p5.Image
-    rockImage: p5.Image
-    grassUpImage: p5.Image
-    grassLeftImage: p5.Image
-    grassRightImage: p5.Image
 
     scoreBoardX: number
     scoreBoardRefY: number
@@ -31,6 +28,8 @@ class View {
 
     timerDisplay: HTMLElement
 
+    debugViewer: DebugView
+
     constructor(p5: p5, model: Model) {
 
         this.p5 = p5
@@ -40,6 +39,8 @@ class View {
         this.loadImages()
         this.loadFonts()
         this.selectDomElements()
+
+        this.debugViewer = new DebugView(p5, model)
 
     }
 
@@ -53,14 +54,9 @@ class View {
     }
 
     loadImages() {
-        this.stationaryImage = this.p5.loadImage("./assets/images/canoe/canoe-stationary.png");
-        this.leftDipImage = this.p5.loadImage("./assets/images/canoe/canoe-left-dip.png");
-        this.rightDipImage = this.p5.loadImage("./assets/images/canoe/canoe-right-dip.png");
-        this.rockImage = this.p5.loadImage("./assets/images/river/rocks.png");
-        
-        this.grassUpImage = this.p5.loadImage("./assets/images/scene/grass-up.svg")
-        this.grassLeftImage = this.p5.loadImage("./assets/images/scene/grass-left.svg")
-        this.grassRightImage = this.p5.loadImage("./assets/images/scene/grass-right.svg")
+        this.stationaryImage = this.p5.loadImage("./assets/images/canoe/canoe-stationary.svg");
+        this.leftDipImage = this.p5.loadImage("./assets/images/canoe/canoe-left-dip.svg");
+        this.rightDipImage = this.p5.loadImage("./assets/images/canoe/canoe-right-dip.svg");
     }
 
     loadFonts() {
@@ -73,13 +69,12 @@ class View {
     }
 
     render() {
-        this.p5.background(119, 211, 119)
-        // this.drawGrass()
+        this.p5.background("#00b16a")
         this.drawRiver()
         this.drawNumbers()
         this.drawCanoe()
-        // this.drawRocks()
         this.updateTimer()
+        // this.debugViewer.render()
     }
 
     drawRiver() {    
@@ -107,7 +102,7 @@ class View {
             this.p5.endShape()
 
             this.p5.strokeWeight(Constants.riverWidth)
-            this.p5.stroke(31, 206, 150)
+            this.p5.stroke("#2980b9")
             
             this.p5.beginShape()
 
@@ -147,7 +142,7 @@ class View {
             this.p5.textFont(this.numFont)
             for (const number of this.model.numberGenerator.riverNumbers) {
                 this.p5.strokeWeight(5)
-                this.p5.stroke('gold')
+                this.p5.stroke('black')
                 this.p5.ellipse(number.position.x, number.position.y, Constants.numberCircleSize)
                 this.p5.strokeWeight(0)
                 this.p5.stroke(0)

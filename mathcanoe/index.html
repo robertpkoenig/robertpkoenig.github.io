@@ -19,8 +19,13 @@
         <div class="flex row space-between">
 
             <div class="panel timer flex-column-even">
-                <div class="flex row center">Time Left</div>
+                <div class="flex row center">Time</div>
                 <div class="flex row center bold large-font" id="time"></div>
+            </div>
+
+            <div id="arrow-key-instructions" class="panel flex vcenter center column" style="visibility: hidden;">
+                <div class="flex row center" style="margin-bottom: 10px">Steer with arrow keys</div>
+                <img src="./assets/images/arrow-keys/arrow-keys.gif" alt="arrow keys" style="width: 130px; height: 90px;">
             </div>
 
             <div class="panel score flex column">
@@ -41,10 +46,14 @@
     <div class="flex center vcenter full-page popup-background" id="popup">
 
         <div class="panel flex column popup">
-
-            <div class="flex column center fun-font tilted" style="margin-bottom: 25px">
+ 
+            <div class="flex column center fun-font tilted" style="margin: 5px; margin-bottom: 25px;">
                 <span class="large-font">Math</span>
                 <span class="x-large-font">Canoe!</span>
+            </div>
+
+            <div class="instructions flex center text-center">
+                Use your arrow keys to steer<br>the canoe to the correct number
             </div>
 
             <div class="medium-font bold flex center">
@@ -53,17 +62,19 @@
 
         </div>
 
-    </div>
+        <div id="crash-screen" class="flex center vcenter full-page popup-background" style="visibility: hidden">
 
-    <div class="flex center vcenter full-page popup-background" id="arrow-key-instructions">
-
-        <div class="panel flex column popup">
-
-            <div class="panel flex column" style="visibility: hidden;">
-                <div class="flex row center" style="margin-bottom: 10px">Steer with arrow keys</div>
-                <img src="./assets/images/arrow-keys/arrow-keys.gif" alt="arrow keys">
-            </div>
-
+            <div class="panel flex column popup">
+     
+                <div class="flex column center fun-font tilted" style="margin: 5px; margin-bottom: 25px;">
+                    <span class="large-font">oh no,</span>
+                    <span class="x-large-font">Crash!</span>
+                </div>
+    
+                <div class="medium-font bold flex center">
+                    Press SPACE to restart
+                </div>
+    
         </div>
 
     </div>

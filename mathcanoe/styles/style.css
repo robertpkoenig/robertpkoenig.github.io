@@ -20,7 +20,7 @@
     }
 
     .timer {
-        width: 130px;
+        min-width: 130px;
         height: 90px;
     }
 
@@ -37,7 +37,7 @@
     }
 
     .score {
-        width: 150px;
+        min-width: 150px;
         height: 145px;
     }
 
@@ -115,4 +115,8 @@
 
     .tilted {
         transform: rotate(-10deg);
+    }
+
+    .instructions {
+        margin: 5px 0px 20px 0px;
     }

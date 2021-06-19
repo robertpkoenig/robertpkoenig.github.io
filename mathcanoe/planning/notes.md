@@ -1,15 +1,15 @@
 # Next Steps
 
-- make the arrow directions come up in a seperate popup
-- make the "press space" animated with CSS
-- new colors
-- adjustments:
-    - size of canoe
-    - canoe position
-    - river width
-    - speed
-    - rate of number generation
-- get screen to resize properly
-- the game keeps going with unlimited time
+- leaderboard screen
 - there is a leader board with time and score, which you can enter your name into
+- add google analytics
+
+
+- leaderboard
+
+- I think I'll do a test project for this first
+- just bring in data from a JSON file
+- manipulate it
+- save it to the JSON file
+- obviously problem if there are multiple people accessing
 - 

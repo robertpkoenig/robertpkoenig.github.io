@@ -1,25 +1,25 @@
 import p5 from "p5"
 import { Constants } from "../../Constants"
+import { Model } from "../Model"
 
 class Timer {
 
     startTimeMillis: number
-    ongoing: boolean
     p5: p5
+    model: Model
 
-    constructor(p5: p5) {
-        this.ongoing = false
+    constructor(p5: p5, model: Model) {
         this.p5 = p5
+        this.model = model
     }
 
     start() {
         this.startTimeMillis = this.p5.millis()
-        this.ongoing = true
     }
 
     getCurrentMillis(): number {
-        if (!this.ongoing) return Constants.maxMillis
-        return Constants.maxMillis - (this.p5.millis() - this.startTimeMillis)
+        if (!this.model.started) return 0
+        return this.p5.millis() - this.startTimeMillis
     }
 
 }

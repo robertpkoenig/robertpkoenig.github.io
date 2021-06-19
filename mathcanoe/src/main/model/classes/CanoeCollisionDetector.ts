@@ -65,8 +65,19 @@ class CollisionDetector {
 
     detectAndReportNumberCollision(): void {
         for (const number of this.model.numberGenerator.riverNumbers) {
-            if (SAT.pointInPolygon(number.collisionCircle.pos, this.model.canoe.polygon)) {
-                this.model.eventManager.handleNumberCollision(number)
+            if (number.collisionCircle.pos.y < this.model.canoe.position.y - Constants.canoeSize / 2 ||
+                number.collisionCircle.pos.y > this.model.canoe.position.y + Constants.canoeSize / 2) {
+                    continue
+                }
+            
+            for (const point of this.model.canoe.polygon.points) {
+                
+                const x = point.x + this.model.canoe.polygon.pos.x
+                const y = point.y + this.model.canoe.polygon.pos.y
+
+                if (SAT.pointInCircle(new Vector(x, y), number.collisionCircle)) {
+                    this.model.eventManager.handleNumberCollision(number)
+                }
             }
         }
     }

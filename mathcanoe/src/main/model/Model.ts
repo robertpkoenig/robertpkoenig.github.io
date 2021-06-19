@@ -9,11 +9,12 @@ import { RockManager } from "./managers/RockManager"
 import { Timer } from "./managers/Timer"
 import { River } from "./classes/River"
 import { EventManager } from "./managers/EventManager"
-import GrassManager from "./managers/GrassManager"
+import SoundPlayer from "./managers/SoundPlayer"
 
 
 class Model {
 
+    p5: p5
     canoe: Canoe
     river: River
 
@@ -23,6 +24,7 @@ class Model {
     controller: Controller
     collisionDetector: CollisionDetector
     timer: Timer
+    soundPlayer: SoundPlayer
     eventManager: EventManager
 
     started: boolean
@@ -32,6 +34,11 @@ class Model {
     instructionsVisible: boolean
 
     constructor(p5: p5) {
+        this.p5 = p5
+        this.setup()
+    }
+
+    setup() {
 
         this.canoe = new Canoe()
         this.river = new River(this.canoe)
@@ -40,8 +47,9 @@ class Model {
         this.numberGenerator = new NumberGenerator(this.equationGenerator, this.river, this.canoe)
         this.pointsManager = new PointsManager(this.equationGenerator, this.numberGenerator)
         this.collisionDetector = new CollisionDetector(this)
-        this.timer = new Timer(p5)
-        this.eventManager = new EventManager(this)
+        this.timer = new Timer(this.p5, this)
+        this.soundPlayer = new SoundPlayer()
+        this.eventManager = new EventManager(this.p5, this, this.soundPlayer)
 
         this.started = false
         this.ongoing = false

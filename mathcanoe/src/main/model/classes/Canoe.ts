@@ -71,7 +71,7 @@ class Canoe {
         this.rightPaddle = false
         this.rotationRadians = 0
 
-        this.height = Math.round(window.innerHeight * 0.75)
+        this.height = Math.round(window.innerHeight * 0.65)
     }
 
     centerCanoeInRiver(river: River) {

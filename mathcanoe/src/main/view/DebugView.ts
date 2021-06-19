@@ -1,4 +1,5 @@
 import p5 from "p5"
+import { Constants } from "../Constants"
 import { Model } from "../model/Model"
 
 class DebugView {
@@ -12,18 +13,19 @@ class DebugView {
     }
 
     render() {
-        this.drawVelocityHeadNode()
-        this.drawCenterCoordinates()
-        this.drawCanoePolygon()
-        this.drawLeftPaddlePolygon()
-        this.drawRightBankCoordinates()
-        this.drawCanoePosition()
-        this.drawCanoeCentroid()
-        this.drawLeftPaddleCentroid()
-        this.drawLeftBankCollisionHeadAndEnd()
-        this.drawRightBankCollisionHead()
-        this.drawRiverVelocityNodeVector()
-        this.drawRiverVelocityRightPerpendicular()
+        // this.drawVelocityHeadNode()
+        // this.drawCenterCoordinates()
+        // this.drawCanoePolygon()
+        // this.drawLeftPaddlePolygon()
+        // this.drawRightBankCoordinates()
+        // this.drawCanoePosition()
+        // this.drawCanoeCentroid()
+        // this.drawLeftPaddleCentroid()
+        // this.drawLeftBankCollisionHeadAndEnd()
+        // this.drawRightBankCollisionHead()
+        // this.drawRiverVelocityNodeVector()
+        // this.drawRiverVelocityRightPerpendicular()
+        // this.drawNumberCollisionCircles()
     }
 
     drawVelocityHeadNode() {
@@ -122,4 +124,21 @@ class DebugView {
                 this.model.river.velocityPositionNode.value.y + leftPerp.y)
     }
 
+    drawNumberCollisionCircles() {
+        this.p5.push() 
+        this.p5.textAlign(this.p5.CENTER, this.p5.CENTER)
+        this.p5.textSize(40)
+        for (const number of this.model.numberGenerator.riverNumbers) {
+            this.p5.strokeWeight(5)
+            this.p5.stroke('black')
+            this.p5.ellipse(number.collisionCircle.pos.x, number.collisionCircle.pos.y, number.collisionCircle.r)
+            this.p5.strokeWeight(0)
+            this.p5.stroke(0)
+            this.p5.text(number.num, number.position.x, number.position.y - 6)
+        }
+        this.p5.pop()
+    }
+
 }
+
+export default DebugView

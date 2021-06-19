@@ -1,12 +1,17 @@
 import { RiverNumber } from "../classes/RiverNumber";
 import { Model } from "../Model";
+import SoundPlayer from "./SoundPlayer";
 
 class EventManager {
 
     model: Model
+    p5: p5
+    soundPlayer: SoundPlayer
 
-    constructor(model: Model) {
+    constructor(p5: p5, model: Model, soundPlayer: SoundPlayer) {
+        this.p5 = p5
         this.model = model
+        this.soundPlayer = soundPlayer
     }
 
     arrowPressed() {
@@ -19,13 +24,12 @@ class EventManager {
         this.model.crashed = true
         this.model.ongoing = false
         this.model.ended = true
-        this.model.timer.ongoing = false
+        document.getElementById("crash-screen").style.visibility = "visible"
     }
 
     handleTimerRunOut() {
         this.model.ongoing = false
         this.model.ended = true
-        this.model.timer.ongoing = false
     }
 
     handleLeftPaddleCollision() {
@@ -42,8 +46,12 @@ class EventManager {
             this.model.pointsManager.incrementScore()
             this.model.equationGenerator.generateAndSetEquation()
             this.model.numberGenerator.replaceExistingNumbers()
+            this.soundPlayer.playSuccess()
         }
-        else this.model.pointsManager.decrementScore()
+        else {
+            this.model.pointsManager.decrementScore()
+            this.soundPlayer.playFailure()
+        }
 
         this.model.numberGenerator.removeNumber(number)
 

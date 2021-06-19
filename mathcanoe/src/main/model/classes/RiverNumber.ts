@@ -10,7 +10,7 @@ class RiverNumber {
     constructor(x: number, y: number, num: number) {
         this.position = new Vector(x, y)
         this.num = num
-        this.collisionCircle = new Circle(this.position, Constants.numberCircleSize)
+        this.collisionCircle = new Circle(this.position, Constants.numberCircleSize / 2)
     }
     
 }
