@@ -4,6 +4,11 @@
         font-family: Poppins;
         color: #333;
         font-size: 18px;
+        background-color: #2980b9;
+    }
+
+    #loading-screen {
+        background-color: white;
     }
 
     #canvas { 

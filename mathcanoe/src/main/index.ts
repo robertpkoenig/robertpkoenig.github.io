@@ -19,13 +19,15 @@ function sketch(p5: p5) {
         view = new View(p5, model)
         controller = new Controller(p5, model)
 
-    };
+        document.getElementById("loading-screen").style.visibility = "hidden"
+
+    }
 
     p5.draw = () => {
         p5.background(255)
         model.process()
         view.render()
-    };
+    }
 
     // P5.js is used to pass keyboard events to the controller class
     p5.keyPressed = () => {            

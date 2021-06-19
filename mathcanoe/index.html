@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +11,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
     <title>Math Canoe</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D17ZJTH0CV"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-D17ZJTH0CV');
+    </script>
+
 </head>
+
 <body>
+
+    <!-- Loading screen -->
+    <div id="loading-screen" class="flex center vcenter full-page" style="background-color: white; z-index: 1;">
+        <img src="./assets/images/loading-spinner.gif" alt="loading spinner" style="width: 50px; height: 50px;">
+    </div>
 
     <div id="canvas"></div>
 
@@ -80,5 +99,7 @@
     </div>
 
 </body>
+
 <script src="bundle/bundle.js"></script>
+
 </html>

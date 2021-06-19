@@ -151,28 +151,6 @@ class View {
         this.p5.pop()
     }
 
-    // drawGrass() {
-    //     for (const generation of this.model.sceneManager.grassGenerations) {
-    //         for (const grass of generation) {
-
-    //             let image
-
-    //             if (grass.direction == GrassBladeDirection.UP) {
-    //                 image = this.grassUpImage 
-    //             }
-    //             if (grass.direction == GrassBladeDirection.LEFT) {
-    //                 image = this.grassLeftImage 
-    //             }
-    //             if (grass.direction == GrassBladeDirection.RIGHT) {
-    //                 image = this.grassRightImage 
-    //             }
-
-    //             this.p5.image(image, grass.pos.x, grass.pos.y, 10, 10)
-
-    //         }
-    //     }
-    // }
-
     updateTimer() {
         const seconds = Math.floor(this.model.timer.getCurrentMillis() / 1000)
         const minutes = Math.floor(seconds / 60)
