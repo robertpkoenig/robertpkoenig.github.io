@@ -1,8 +1,10 @@
-import { Constants } from "../../Constants";
+import Constants from "../../Constants";
 import { Canoe } from "../classes/Canoe";
 import { Drawable } from "../classes/Drawable";
 import { River } from "../classes/River";
 
+// This is unused code for managing rocks in the river. This was from
+// a previous version of hte game, and may be re-introduced.
 class RockManager {
 
     river: River
@@ -22,7 +24,6 @@ class RockManager {
     // create a rock that is at the same Y level, and with x that is plus or minus 10
     // add it to the array
     // have a second method that removes the last rock if it is above a Y threshold
-
     generateRocks() {
         
         if (this.countDown > 0) {
@@ -32,22 +33,21 @@ class RockManager {
 
         const riverHead = this.river.centerCoordinates.head.value
         const y = riverHead.y
-        const xOffset = (Math.random() * Constants.riverWidth) - Constants.riverWidth / 2
+        const xOffset = (Math.random() * Constants.RIVER_WIDTH) - Constants.RIVER_WIDTH / 2
         const x = riverHead.x + xOffset 
-        const newRock = new Drawable(x, y, Constants.rockWidthAndHeight, "rock")
+        const newRock = new Drawable(x, y, Constants.ROCK_W_H, "rock")
         this.rocks.push(newRock)
 
         // set the countdown somwhere between 30 and 60
         this.countDown = (Math.random() * 30) + 30
 
         this.removeRocksBelowScreen()
-        // console.log(this.rocks[0])
     }
 
     removeRocksBelowScreen() {
         if (this.rocks.length == 0) return
         const oldestRock = this.rocks[this.rocks.length - 1]
-        if (oldestRock.position.y > window.innerHeight + Constants.rockWidthAndHeight) {
+        if (oldestRock.position.y > window.innerHeight + Constants.ROCK_W_H) {
             this.rocks.pop()
         }
     }

@@ -99,12 +99,12 @@ class Controller {
 
     handleLeftPress(): void {
         this.model.canoe.paddleLeft()
-        this.model.eventManager.arrowPressed()
+        this.model.eventManager.hideArrowInstructions()
     }
     
     handleRightPress(): void {
         this.model.canoe.paddleRight()
-        this.model.eventManager.arrowPressed()
+        this.model.eventManager.hideArrowInstructions()
     }
 
     handleUpPress(): void {

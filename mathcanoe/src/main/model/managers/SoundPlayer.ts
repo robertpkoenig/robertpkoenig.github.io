@@ -1,3 +1,7 @@
+
+// Playes the success and failure sounds when a player
+// collides with a number. This is called by the
+// EventManager class.
 class SoundPlayer {
 
     success: HTMLAudioElement

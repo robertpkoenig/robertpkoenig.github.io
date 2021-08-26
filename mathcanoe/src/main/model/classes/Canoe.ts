@@ -2,7 +2,8 @@ import P5 from "p5"
 import { rotatePoint } from "../../helper/Rotate"
 import { River } from "./River"
 import SAT, { Polygon, Vector } from 'sat'
-import { Constants } from "../../Constants"
+import Constants from "../../Constants"
+
 
 class Canoe {
 
@@ -186,9 +187,9 @@ class Canoe {
 
     applyPhysics() {
 
-        let x = this.river.velocityNodeAtCanoePosition.value.x * (Constants.centerPointYGap / 2)
+        let x = this.river.velocityNodeAtCanoePosition.value.x * (Constants.CENTER_POINT_Y_GAP / 2)
         x *= -1
-        let y = this.river.velocityNodeAtCanoePosition.value.y * (Constants.centerPointYGap / 2)
+        let y = this.river.velocityNodeAtCanoePosition.value.y * (Constants.CENTER_POINT_Y_GAP / 2)
 
         // Apply the effects of the river
         this.velocity.x = x 
@@ -228,8 +229,8 @@ class Canoe {
 
         const canoeVectors: SAT.Vector[] = []
         for (const offset of this.canoePathOffsets) {
-            const width = offset[0] * Constants.canoeSize
-            const height = offset[1] * Constants.canoeSize
+            const width = offset[0] * Constants.CANOE_W_H
+            const height = offset[1] * Constants.CANOE_W_H
             const nextClockwiseVector = new SAT.Vector(width, height)
             canoeVectors.push(nextClockwiseVector)
         }
@@ -237,8 +238,8 @@ class Canoe {
     
         const leftPaddleVectors: SAT.Vector[] = []
         for (const offset of this.leftPaddlePathOffsets) {
-            const width = offset[0] * Constants.canoeSize
-            const height = offset[1] * Constants.canoeSize
+            const width = offset[0] * Constants.CANOE_W_H
+            const height = offset[1] * Constants.CANOE_W_H
             const nextClockwiseVector = new SAT.Vector(width, height)
             leftPaddleVectors.push(nextClockwiseVector)
         }
@@ -246,8 +247,8 @@ class Canoe {
  
         const rightPaddleVectors: SAT.Vector[] = []
         for (const offset of this.rightPaddlePathOffsets) {
-            const width = offset[0] * Constants.canoeSize
-            const height = offset[1] * Constants.canoeSize
+            const width = offset[0] * Constants.CANOE_W_H
+            const height = offset[1] * Constants.CANOE_W_H
             const nextClockwiseVector = new SAT.Vector(width, height)
             rightPaddleVectors.push(nextClockwiseVector)
         }

@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Welcome to my portfolio site!">
+    <link rel="shortcut icon" type="image/png" href="/portfolio/assets/favicon.png"/>
+    <title>Robert Koenig</title>
+
+    <!-- css compiled by tailwind -->
+    <link rel="stylesheet" href="style.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-D17ZJTH0CV"></script>
@@ -15,10 +20,627 @@
 
     gtag('config', 'G-D17ZJTH0CV');
     </script>
-    
 </head>
+
 <body>
-    <h1>Rob Koenig's Portfolio</h1>
-    <p>Coming soon!</p>
+
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <div class="h-screen flex overflow-hidden bg-white">
+        <!-- Static sidebar for desktop -->
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64">
+                <!-- Sidebar component, swap this element with another sidebar if you like -->
+                <div class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
+                    <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+                        <div class="flex items-center flex-shrink-0 px-4">
+                        <img class="h-8 w-auto" src="/portfolio/assets/memoji.svg" alt="Workflow">
+                        </div>
+                        <nav class="mt-5 flex-1 px-2 bg-white space-y-1">
+                            <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
+                            <a href="#introduction" id="introductionButton" class="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                                <!--
+                                Heroicon name: outline/home
+                
+                                Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500"
+                                -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-500 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+                                </svg>
+                                Introduction
+                            </a>
+                
+                            <a href="#projects" id="projectsButton" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                                <!-- Heroicon name: outline/folder -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-500 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                </svg>
+                                Projects
+                            </a>
+
+
+                            <a href="#experience"  id="experienceButton" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                                <!-- Heroicon name: outline/calendar -->
+                                <svg class="text-gray-500 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                Experience
+                            </a>
+                
+                            <a href="#education"  id="educationButton" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                                <!-- Heroicon name: outline/calendar -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-500 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                                </svg>
+                                Education
+                            </a>
+
+                            <a href="#activities"  id="activitiesButton" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-500 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Activities
+                            </a>
+    
+                        </nav>
+                    </div>
+                    <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
+                            <div class="flex items-center">
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                                        robertpkoenig@gmail.com
+                                    </p>
+                                    <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                                        +44 (0) 7419 846 984
+                                    </p>
+                                    <div class="flex gap-2 pt-2">
+                                        <a href="https://github.com/robertpkoenig" target="_blank" class="text-gray-400 hover:text-gray-500 cursor-pointer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor">
+                                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                            </svg>
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/robertpkoenig/" target="_blank" class="text-gray-400 hover:text-gray-500 cursor-pointer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
+                                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                            <rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                                        </a>
+                                    </div>
+                               </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col w-0 flex-1 overflow-hidden">
+            <main id="main" class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
+                <!-- Introduction -->
+                <div id="introduction" class="py-6 mx-4 sm:mx-6 md:mx-8">
+                    <div class="max-w-7xl">
+                        <h1 class="text-2xl font-semibold text-gray-900">Introduction</h1>
+                    </div>
+                    <div class="max-w-7xl mx-auto">
+                        <div class="flex flex-col gap-4 pt-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                <div class="text-gray-500 font-light">
+                                    Profile
+                                </div>
+                                <div>
+                                    Hi! I'm Rob. I am a software engineer and product manager.
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                <div class="text-gray-500 font-light">
+                                    Highlights
+                                </div>
+                                <ul class="list-disc ml-4">
+                                    <li>
+                                        MSc Computer Science from the University of St Andrews
+                                    </li>
+                                    <li>
+                                        Startup founder
+                                    </li>
+                                    <li>
+                                        Investment Analyst at Baillie Gifford
+                                    </ul>
+                                </ul>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                <div class="text-gray-500 font-light">
+                                    Skills
+                                </div>
+                                <div>
+                                    Java, JUnit, Mockito, SQL, Typescript/Javascript, React, Mocha, Firebase, SciKitLearn
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                <div class="text-gray-500 font-light">
+                                    Learning
+                                </div>
+                                <div>
+                                    Python, C++, Robotics, Svelte
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                <div class="text-gray-500 font-light">
+                                    Why me
+                                </div>
+                                <ul class="list-disc ml-4">
+                                    <li>
+                                        Good communicator
+                                    </li>
+                                    <li>
+                                        Can unpack complex projects and develop a sensible plan of attack
+                                    </li>
+                                    <li>
+                                        Highly motivated individual contributor and conscientious team player
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                            <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                <div class="text-gray-500 font-light">
+                                    Nationality
+                                </div>
+                                <ul class="list-disc ml-4">
+                                    <li>
+                                        American citizen
+                                    </li>
+                                    <li>
+                                        UK resident
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                <div class="text-gray-500 font-light">
+                                    Contact
+                                </div>
+                                <div>
+                                    robertpkoenig@gmail.com<br>
+                                    +44 (0) 7419 846 984
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="flex flex-col gap-4 pt-4">
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Projects -->
+                <div id="projects" class="py-6 mx-4 sm:mx-6 md:mx-8 border-t">
+                    <div class="max-w-7xl">
+                        <h1 class="text-2xl font-semibold text-gray-900">Selected Projects</h1>
+                    </div>
+                    <div class="max-w-7xl flex flex-col gap-5 pt-5">
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-cv">
+                            <div class="text-gray-500">
+                                Ochem.io
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <div>
+                                    Digital learning platform for organic chemistry
+                                </div>
+                                <ul class="text-gray-700 font-light text-sm list-disc ml-4">
+                                    <li>
+                                        Full stack design and implementation
+                                    </li>
+                                    <li>
+                                        Developed in collaboration with Edinburgh University where it is being piloted
+                                    </li>
+                                    <li>
+                                        Complex graphical user interface
+                                    </ul>
+                                </ul>
+                                <div class="font-light text-sm text-gray-400 italic">
+                                    Typescript, HTML5 Canvas, Next.js, React, Tailwind, Firebase
+                                </div>
+                                <div class="flex flex-row gap-2 text-indigo-600">
+                                    <a target="_blank" href="https://www.ochem.io/" class="hover:text-indigo-700">
+                                        Link
+                                    </a>
+                                    <a target="_blank" href="https://github.com/robertpkoenig/ochem" class="hover:text-indigo-700">
+                                        Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-cv">
+                            <div class="text-gray-500">
+                                MUSICBOX
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <div>
+                                    Visual music loop creator
+                                </div>
+                                <ul class="text-gray-700 font-light text-sm list-disc ml-4">
+                                    <li>
+                                        Optional hardware interface
+                                    </li>
+                                    <li>
+                                        3D graphics
+                                    </li>
+                                </ul>
+                                <div class="font-light text-sm text-gray-400 italic">
+                                    Javascript, WEBGL
+                                </div>
+                                <div class="flex flex-row gap-2 text-indigo-600">
+                                    <a target="_blank" href="https://robertpkoenig.github.io/musicbox/" class="hover:text-indigo-700">
+                                        Link
+                                    </a>
+                                    <a target="_blank" href="https://github.com/robertpkoenig/robertpkoenig.github.io/tree/master/musicbox" class="hover:text-indigo-700">
+                                        Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-cv">
+                            <div class="text-gray-500">
+                                Math Canoe
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <div>
+                                    Mathematics educational game
+                                </div>
+                                <ul class="text-gray-700 font-light text-sm list-disc ml-4">
+                                    <li>
+                                        Procedural generation
+                                    </li>
+                                    <li>
+                                        Complex physics engine
+                                    </li>
+                                    <li>
+                                        Optional hardward interface using accelerometers
+                                    </li>
+                                </ul>
+                                <div class="font-light text-sm text-gray-400 italic">
+                                    Typescript, HTML5 Canvas, p5.js
+                                </div>
+                                <div class="flex flex-row gap-2 text-indigo-600">
+                                    <a target="_blank" href="https://robertpkoenig.github.io/mathcanoe/" class="hover:text-indigo-700">
+                                        Link
+                                    </a>
+                                    <a target="_blank" href="https://github.com/robertpkoenig/robertpkoenig.github.io/tree/master/mathcanoe" class="hover:text-indigo-700">
+                                        Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-cv pb-2">
+                            <div class="text-gray-500">
+                                Yahtzee
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <div>
+                                    Implementation of a model for Yahtzee
+                                </div>
+                                <ul class="text-gray-700 font-light text-sm list-disc ml-4">
+                                    <li>
+                                        Test driven development
+                                    </li>
+                                    <li>
+                                        Mock test objects
+                                    </li>
+                                    <li>
+                                        Clean coding
+                                    </li>
+                                </ul>
+                                <div class="font-light text-sm text-gray-400 italic">
+                                    Java, JUnit, Mockito
+                                </div>
+                                <div class="flex flex-row gap-2 text-indigo-600">
+                                    <a target="_blank" href="https://github.com/robertpkoenig/yahtzee" class="hover:text-indigo-700">
+                                        Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div id="experience" class="py-6 mx-4 sm:mx-6 md:mx-8 border-t">
+                    <div class="max-w-7xl">
+                        <h1 class="text-2xl font-semibold text-gray-900">Experience</h1>
+                    </div>
+                    <div class="max-w-7xl">
+                        <div class="py-4">
+                            <div class="flex flex-col gap-3">
+                                <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                    <div class="text-gray-400 font-light">
+                                        Jan’ 2020 – July 2020
+                                    </div>
+                                    <div class="flex flex-col gap-0">
+                                        <div class="text-gray-700 font-semibold">
+                                            Robert Koenig Ltd.
+                                        </div>
+                                        <div class="text-gray-500 font-normal">
+                                            Software Engineering Consultant
+                                        </div>
+                                        <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                            <li>
+                                                Re-developed the website for a large Norwegian Arctic tour company, front and back end. Wireframed and implemented 15 new pages and templates with support for three languages, including new trip planning functionality and content management systems.
+                                            </li>
+                                            <li>
+                                                Helped implement an online gym platform with team which generates over £30k per month
+                                            </li>
+                                            <li>
+                                                Designed and implemented an engineering management dashboard
+                                            </li>
+                                            <li>
+                                                Created a 15 hour technical tutorial on the Bubble.io platform
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                    <div class="text-gray-400 font-light">
+                                        Feb’ 2017 – Dec’ 2019
+                                    </div>
+                                    <div class="flex flex-col gap-0">
+                                        <div class="text-gray-700 font-semibold">
+                                            Spoonzy Ltd.
+                                        </div>
+                                        <div class="text-gray-500 font-normal">
+                                            Founder and CEO
+                                        </div>
+                                        <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                            <li>
+                                                Innovative online grocery shopping platform
+                                            </li>
+                                            <li>
+                                                Raised £100k investment
+                                            </li>
+                                            <li>
+                                                Recruited and led two employees
+                                            </li>
+                                            <li>
+                                                Built a full stack web app
+                                            </li>
+                                            <li>
+                                                Participated in the King’s College 20 accelerator
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                    <div class="text-gray-400 font-light">
+                                        Sept’ 2013 - Sept' 2016
+                                    </div>
+                                    <div class="flex flex-col gap-0">
+                                        <div class="text-gray-700 font-semibold">
+                                            Baillie Gifford
+                                        </div>
+                                        <div class="text-gray-500 font-normal">
+                                            Investment Analyst
+                                        </div>
+                                        <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                            <li>
+                                                Performed long-term, bottom-up, deep-dive analysis on global equities
+                                            </li>
+                                            <li>
+                                                Promoted to investment manager prior to departure
+                                            </li>
+                                            <li>
+                                                Firm manages £200b, and was named the UK's best asset manager
+                                            </li>
+                                            <li>
+                                                Successfully recommended investment in Reply (REY) which appreciated 7,000%
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                    <div class="text-gray-400 font-light">
+                                        June 2012 – Aug’ 2012
+                                    </div>
+                                    <div class="flex flex-col gap-0">
+                                        <div class="text-gray-700 font-semibold">
+                                            Baillie Gifford
+                                        </div>
+                                        <div class="text-gray-500 font-normal">
+                                            Investment Analyst Intern
+                                        </div>
+                                        <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                            <li>
+                                                Selected for one of five internship positions out of 3,000 applicants
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div id="education" class="py-6 mx-4 sm:mx-6 md:mx-8 border-t ">
+                <div class="max-w-7xl">
+                    <h1 class="text-2xl font-semibold text-gray-900">Education</h1>
+                </div>
+                <div class="max-w-7xl">
+                    <div class="py-4">
+                        <div class="flex flex-col gap-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                <div class="text-gray-400 font-light">
+                                    July 2020 - Sept’ 2021
+                                </div>
+                                <div class="flex flex-col gap-0">
+                                    <div class="text-gray-700 font-semibold">
+                                        University of St Andrews
+                                    </div>
+                                    <div class="text-gray-500 font-normal">
+                                        MSc Computer Science, Distinction
+                                    </div>
+                                    <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                        <li>
+                                            First class marks on every piece of coursework
+                                        </li>
+                                        <li>
+                                            Wide range of practical modules including OOP, TDD, CI/CD, SQL, ML, AI, Video Games, and Interactive Hardware
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                <div class="text-gray-400 font-light">
+                                    Dec' 2014
+                                </div>
+                                <div class="flex flex-col gap-0">
+                                    <div class="text-gray-700 font-semibold">
+                                        CFA Institute
+                                    </div>
+                                    <div class="text-gray-500 font-normal">
+                                        Chartered Financial Analyst, Level 1
+                                    </div>
+                                    <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                        <li>
+                                            Top marks in every category
+                                        </li>
+                                        <li>
+                                            Exam has pass rate of 42%
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                <div class="text-gray-400 font-light">
+                                    Sept' 2010 - June 2013
+                                </div>
+                                <div class="flex flex-col gap-0">
+                                    <div class="text-gray-700 font-semibold">
+                                        King’s College London and SOAS, University of London
+                                    </div>
+                                    <div class="text-gray-500 font-normal">
+                                        BA (Hons) Middle Eastern Studies and Geography, 1st Class
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-cv">
+                                <div class="text-gray-400 font-light">
+                                    June 2011 – Aug’ 2011
+                                </div>
+                                <div class="flex flex-col gap-0">
+                                    <div class="text-gray-700 font-semibold">
+                                        London School of Economics Summer School
+                                    </div>
+                                    <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                        <li>
+                                            Statistics (A)
+                                        </li>
+                                        <li>
+                                            Microeconomics (A-)
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                   
+                <!-- Activites -->
+                <div id="activities" class="py-6 mx-4 sm:mx-6 md:mx-8 border-t sm:min-h-screen">
+                    <div class="max-w-7xl">
+                        <h1 class="text-2xl font-semibold text-gray-900">Activites</h1>
+                    </div>
+                    <div class="max-w-7xl">
+                        <div class="py-4 flex flex-col gap-3">
+
+                            <div class="flex flex-col gap-0">
+                                <div class="text-gray-600 font-semibold">
+                                    Debate Society
+                                </div>
+                                <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                    <li>
+                                        Chair of SOAS Debate Society
+                                    </li>
+                                    <li>
+                                        Placed 4th out of 74 at London School of Economics Intervarsity
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex flex-col gap-0">
+                                <div class="text-gray-600 font-semibold">
+                                    Travel & Volunteering
+                                </div>
+                                <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                    <li>
+                                        Traveled extensively in the Middle East to Yemen, Lebanon, Syria, and Israel
+                                    </li>
+                                    <li>
+                                        Imported olive oil soap to the USA
+                                    </li>
+                                    <li>
+                                        Volunteered at Beirut children’s cancer hospital
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex flex-col gap-0">
+                                <div class="text-gray-600 font-semibold">
+                                    Tutoring Society
+                                </div>
+                                <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                    <li>
+                                        Founded and led university society which tutored and mentored 20+ sixth form students
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex flex-col gap-0">
+                                <div class="text-gray-600 font-semibold">
+                                    Squash
+                                </div>
+                                <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                    <li>
+                                        Reached league 1 out of 14 at a competitive Edinburgh squash club
+                                    </li>
+                                    <li>
+                                        Volunteer squash coach
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="flex flex-col gap-0">
+                                <div class="text-gray-600 font-semibold">
+                                    Music
+                                </div>
+                                <ul class="text-gray-500 font-light text-sm list-disc ml-4">
+                                    <li>
+                                        Write and record original compositions
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            </main>
+        </div>
+    </div>
+  
+
 </body>
+<script async src="/portfolio/script.js"></script>
 </html>

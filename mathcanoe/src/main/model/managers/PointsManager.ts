@@ -1,16 +1,10 @@
-import { RiverNumber } from "../classes/RiverNumber";
-import { EquationGenerator } from "./EquationGenerator";
-import { NumberGenerator } from "./NumberGenerator";
 
+// This class just keeps track of the score.
 class PointsManager {
 
-    equationGenerator: EquationGenerator
-    numberGenerator: NumberGenerator
     score: number
 
-    constructor(equationGenerator: EquationGenerator, numberGenerator: NumberGenerator) {
-        this.equationGenerator = equationGenerator
-        this.numberGenerator = numberGenerator
+    constructor() {
         this.score = 0
     }
     

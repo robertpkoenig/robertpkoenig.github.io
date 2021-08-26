@@ -1,5 +1,5 @@
 import SAT, { Vector } from "sat"
-import { Constants } from "../../Constants"
+import Constants from "../../Constants"
 import { Model } from "../Model"
 
 class CollisionDetector {
@@ -13,13 +13,13 @@ class CollisionDetector {
     }
 
     setCollisionCheckLength() {
-        this.collisionCheckLength = (Constants.canoeSize * 2) / Constants.centerPointYGap        
+        this.collisionCheckLength = (Constants.CANOE_W_H * 2) / Constants.CENTER_POINT_Y_GAP        
     }
 
     detectCollisions() {
 
         if (this.canoeCollisionDetected()) 
-            this.model.eventManager.handleCanoeCollision()
+            this.model.eventManager.handleCanoeCrash()
 
         if (this.leftPaddleCollisitionDetected())
             this.model.eventManager.handleLeftPaddleCollision()
@@ -65,8 +65,8 @@ class CollisionDetector {
 
     detectAndReportNumberCollision(): void {
         for (const number of this.model.numberGenerator.riverNumbers) {
-            if (number.collisionCircle.pos.y < this.model.canoe.position.y - Constants.canoeSize / 2 ||
-                number.collisionCircle.pos.y > this.model.canoe.position.y + Constants.canoeSize / 2) {
+            if (number.collisionCircle.pos.y < this.model.canoe.position.y - Constants.CANOE_W_H / 2 ||
+                number.collisionCircle.pos.y > this.model.canoe.position.y + Constants.CANOE_W_H / 2) {
                     continue
                 }
             

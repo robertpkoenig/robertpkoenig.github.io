@@ -1,5 +1,5 @@
 import { Vector } from "sat"
-import { Constants } from "../../Constants"
+import Constants from "../../Constants"
 import { LinkedList } from "../../helper/LinkedList"
 import { LLNode } from "../../helper/LLNode"
 import { Wave } from "../../helper/Wave"
@@ -51,7 +51,7 @@ class River {
         this.rightBankSand = new LinkedList<Vector>()
         this.leftBankSand = new LinkedList<Vector>()
 
-        this.collisionHeadHeight = this.canoe.height - Constants.canoeSize
+        this.collisionHeadHeight = this.canoe.height - Constants.CANOE_W_H
     }
 
     initializeRiverWaves() {
@@ -79,10 +79,10 @@ class River {
     generateInitialBankPoint() {
         let firstCenterXPosition = window.innerWidth / 2
         for (const wave of this.riverWaves) {
-            firstCenterXPosition += wave.getX( - Constants.centerPointYGap)
+            firstCenterXPosition += wave.getX( - Constants.CENTER_POINT_Y_GAP)
         }
         
-        const firstCenterYPosition = -Constants.verticalOffset + Constants.centerPointYGap
+        const firstCenterYPosition = -Constants.VERTICAL_OFFSET + Constants.CENTER_POINT_Y_GAP
         const firstCenterPoint = new Vector(firstCenterXPosition, firstCenterYPosition)
         this.centerCoordinates.addFirst(firstCenterPoint)
         // Add a dummy velocity to ensure length of velocities is same as river
@@ -106,7 +106,7 @@ class River {
     }
 
     manageBanks() {
-        while(this.centerCoordinates.head.value.y > - Constants.verticalOffset + Constants.centerPointYGap) {
+        while(this.centerCoordinates.head.value.y > - Constants.VERTICAL_OFFSET + Constants.CENTER_POINT_Y_GAP) {
             this.generateBanks()
         }
     }
@@ -120,7 +120,7 @@ class River {
             const centerXChange = prevCenterCoordinate.x - newCenterCoordinate.x
             const centerYChange = prevCenterCoordinate.y - newCenterCoordinate.y
             const hypotenuse = Math.sqrt((centerXChange * centerXChange) + (centerYChange * centerYChange))
-            const positionMultiplier = (Constants.riverWidth / 2) / hypotenuse
+            const positionMultiplier = (Constants.RIVER_WIDTH / 2) / hypotenuse
 
             // multiply the centerRise by position multiplier to get the increase in left bank x position
             const newLeftBankCoordinateX = (newCenterCoordinate.x + (centerYChange * positionMultiplier))
@@ -145,18 +145,18 @@ class River {
             this.addNewVelocityToList(centerXChange, centerYChange, hypotenuse)
 
             if (this.leftBankCollisionHead != null) this.updateCollisionHeads()
-            this.bankLength += Constants.centerPointYGap
+            this.bankLength += Constants.CENTER_POINT_Y_GAP
             // Because of y axis going down, bank length grows negatively
             // this.bankLength -= Constants.centerPointYGap;
             
-            this.bankAdditionIncrement += Constants.flowRate
+            this.bankAdditionIncrement += Constants.FLOW_RATE
     }
 
     addNewVelocityToList(centerXChange: number, centerYChange: number, hypotenuse: number) {
         const riverVelocity: Vector = new Vector((centerXChange/hypotenuse), (centerYChange/hypotenuse))
         riverVelocity.normalize()
-        riverVelocity.x *= Constants.flowRate
-        riverVelocity.y *= Constants.flowRate
+        riverVelocity.x *= Constants.FLOW_RATE
+        riverVelocity.y *= Constants.FLOW_RATE
         this.velocities.addFirst(riverVelocity)
         if (this.velocityNodeAtCanoePosition != null) {
             this.updateVelocityNodeAtCanoePosition();
@@ -175,7 +175,7 @@ class River {
         for (const wave of this.riverWaves) {
             bankXOffset += wave.getX(this.bankLength);
         }
-        const newCenterPoint = new Vector(bankXOffset, this.centerCoordinates.head.value.y - Constants.centerPointYGap);
+        const newCenterPoint = new Vector(bankXOffset, this.centerCoordinates.head.value.y - Constants.CENTER_POINT_Y_GAP);
         return newCenterPoint;
     }
 

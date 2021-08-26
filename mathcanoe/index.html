@@ -31,22 +31,28 @@
         <img src="./assets/images/loading-spinner.gif" alt="loading spinner" style="width: 50px; height: 50px;">
     </div>
 
+    <!-- The element where the p5 canvas resides -->
     <div id="canvas"></div>
 
+    <!-- Full page flex group containing top items, and the equation on bottom -->
     <div class="flex column space-between full-page">
 
+        <!-- Top flex group containing the timer, score, and the initial arrow instructions -->
         <div class="flex row space-between">
 
+            <!-- Timer -->
             <div class="panel timer flex-column-even">
                 <div class="flex row center">Time</div>
                 <div class="flex row center bold large-font" id="time"></div>
             </div>
 
+            <!-- Arrow instructions -->
             <div id="arrow-key-instructions" class="panel flex vcenter center column" style="visibility: hidden;">
                 <div class="flex row center" style="margin-bottom: 10px">Steer with arrow keys</div>
                 <img src="./assets/images/arrow-keys/arrow-keys.gif" alt="arrow keys" style="width: 130px; height: 90px;">
             </div>
 
+            <!-- Score -->
             <div class="panel score flex column">
                 <div class="flex row center">Score</div>
                 <div class="flex row center bold x-x-large-font" id="score">0</div>
@@ -54,6 +60,7 @@
 
         </div>
 
+        <!-- Equation -->
         <div class="flex row center">
             <div class="panel equation flex center vcenter bold large-font">
                 <div id="equation"></div>
@@ -62,6 +69,7 @@
 
     </div>
 
+    <!-- Intro popup -->
     <div class="flex center vcenter full-page popup-background" id="popup">
 
         <div class="panel flex column popup">
@@ -81,25 +89,31 @@
 
         </div>
 
-        <div id="crash-screen" class="flex center vcenter full-page popup-background" style="visibility: hidden">
+    </div>
+
+    <!-- Crash popup -->
+    <div class="flex center vcenter full-page popup-background" style="visibility: hidden" id="crash-screen">
+
+        <div class="flex center vcenter full-page popup-background">
 
             <div class="panel flex column popup">
-     
+    
                 <div class="flex column center fun-font tilted" style="margin: 5px; margin-bottom: 25px;">
                     <span class="large-font">oh no,</span>
                     <span class="x-large-font">Crash!</span>
                 </div>
-    
+
                 <div class="medium-font bold flex center">
                     Press SPACE to restart
                 </div>
-    
+
         </div>
 
     </div>
 
 </body>
 
+<!-- The bundled JS, compiled from the typescript files in the src folder -->
 <script src="bundle/bundle.js"></script>
 
 </html>

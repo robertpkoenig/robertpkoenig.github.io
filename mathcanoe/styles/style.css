@@ -1,3 +1,4 @@
+/* Page level styles */
 
     body {
         margin: 0px;
@@ -7,14 +8,17 @@
         background-color: #2980b9;
     }
 
-    #loading-screen {
-        background-color: white;
-    }
+/* Containers */
 
+    /* p5 container */
     #canvas { 
         position: absolute;
         width: 100vw;
         height: 100vh;
+    }
+
+    #loading-screen {
+        background-color: white;
     }
 
     .panel {
@@ -24,38 +28,6 @@
         padding: 10px;
     }
 
-    .timer {
-        min-width: 130px;
-        height: 90px;
-    }
-
-    #time {
-        margin: -5px;
-    }
-
-    .bold {
-        font-weight: 700;
-    }
-
-    #arrow-key-instructions {
-        padding: 20px 30px;
-    }
-
-    .score {
-        min-width: 150px;
-        height: 145px;
-    }
-
-    #score {
-        margin: -15px;
-        font-size: 100px;
-    }
-
-    .equation {
-       width: 300px;
-       height: 60px;
-    }
-
     .full-page {
         position: absolute;
         top: 0;
@@ -63,6 +35,16 @@
         right: 0;
         bottom: 0;
     }
+
+    .popup-background {
+        background-color: #33333388;
+    }
+
+    .popup {
+        padding: 40px 60px;
+    }
+
+/* Layout */
 
     .flex {
         display: flex;
@@ -92,34 +74,62 @@
         text-align: center;
     }
 
-    .popup-background {
-        background-color: #33333388;
-    }
+/* Text */
 
-    .popup {
-        padding: 40px 60px;
+    .bold {
+        font-weight: 700;
     }
 
     .medium-font {
         font-size: 30px;
     }
-
+    
     .large-font {
         font-size: 50px;
     }
-
+    
     .x-large-font {
         font-size: 100px;
     }
-
+    
     .fun-font {
         font-family: Luckiest Guy;
         color: #3498db;
         text-shadow: 5px 5px #333333;
     }
-
+    
     .tilted {
         transform: rotate(-10deg);
+    }
+
+/* Game stats */
+
+    .timer {
+        min-width: 130px;
+        height: 90px;
+    }
+
+    #time {
+        margin: -5px;
+    }
+
+    #arrow-key-instructions {
+        padding: 20px 30px;
+    }
+
+    .score {
+        min-width: 150px;
+        height: 145px;
+    }
+
+    #score {
+        margin: -15px;
+        font-size: 100px;
+    }
+
+    .equation {
+        width: 300px;
+        height: 60px;
     }
 
     .instructions {

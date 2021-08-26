@@ -1,10 +1,9 @@
 import p5 from 'p5'
-import { Constants } from "../Constants"
-import { Vector } from "sat"
+import Constants from "../Constants"
 import { Model } from "../model/Model"
-import { GrassBladeDirection } from '../model/classes/GrassBlade'
 import DebugView from './DebugView'
 
+// This class draws all game objects to the p5 canvas
 class View {
 
     p5: p5
@@ -38,12 +37,12 @@ class View {
         this.canvasSetup()
         this.loadImages()
         this.loadFonts()
-        this.selectDomElements()
 
         this.debugViewer = new DebugView(p5, model)
 
     }
 
+    // Set the P5 drawing parameters
     canvasSetup() {
         this.p5.rectMode(this.p5.CENTER)
         this.p5.rectMode(this.p5.CENTER)
@@ -53,6 +52,7 @@ class View {
         this.p5.frameRate(30)
     }
 
+    // Load the canoe images
     loadImages() {
         this.stationaryImage = this.p5.loadImage("./assets/images/canoe/canoe-stationary.svg");
         this.leftDipImage = this.p5.loadImage("./assets/images/canoe/canoe-left-dip.svg");
@@ -63,26 +63,23 @@ class View {
         this.numFont = this.p5.loadFont('./assets/fonts/Poppins-Medium.ttf')
     }
 
-    selectDomElements() {
-        this.timerDisplay =
-            document.getElementById("time")
-    }
-
+    // Core method which draws things to the p5 canvas
     render() {
         this.p5.background("#00b16a")
+        this.drawRiverBanks()
         this.drawRiver()
         this.drawNumbers()
         this.drawCanoe()
-        this.updateTimer()
         // this.debugViewer.render()
     }
 
-    drawRiver() {    
+    // Draws the sand-colored river banks
+    drawRiverBanks() {
 
         this.p5.push()
 
             this.p5.noFill()
-            this.p5.strokeWeight(Constants.sandBankWidth)
+            this.p5.strokeWeight(Constants.SAND_BANK_WIDTH)
             this.p5.stroke(194, 178, 128)
 
             this.p5.beginShape()
@@ -93,15 +90,18 @@ class View {
 
             this.p5.endShape()
 
-            this.p5.beginShape()
+        this.p5.pop()
 
-                for (const point of this.model.river.rightBankSand) {
-                    this.p5.curveVertex(point.x, point.y)
-                }
+    }
 
-            this.p5.endShape()
+    // Draws the blue river water
+    drawRiver() {    
 
-            this.p5.strokeWeight(Constants.riverWidth)
+        this.p5.push()
+
+            this.p5.noFill()
+
+            this.p5.strokeWeight(Constants.RIVER_WIDTH)
             this.p5.stroke("#2980b9")
             
             this.p5.beginShape()
@@ -116,6 +116,8 @@ class View {
 
     }
 
+    // Draws different canoe images based on the canoe state,
+    // and does so with different rotations
     drawCanoe() {
         let currentImage
         if (this.model.canoe.leftPaddle) currentImage = this.leftDipImage
@@ -125,16 +127,11 @@ class View {
         this.p5.push()
             this.p5.translate(innerWidth / 2, this.model.canoe.position.y);
             this.p5.rotate(this.model.canoe.rotationRadians - Math.PI / 2);
-            this.p5.image(currentImage, 0, 0, Constants.canoeSize, Constants.canoeSize);
+            this.p5.image(currentImage, 0, 0, Constants.CANOE_W_H, Constants.CANOE_W_H);
         this.p5.pop()
     }
 
-    // drawRocks() {
-    //     for (const rock of this.model.rockManager.rocks) {
-    //         this.p5.image(this.rockImage, rock.position.x, rock.position.y, Constants.rockWidthAndHeight, Constants.rockWidthAndHeight)
-    //     }
-    // }
-
+    // Draws the numbers in the river
     drawNumbers() {
         this.p5.push() 
             this.p5.textAlign(this.p5.CENTER, this.p5.CENTER)
@@ -143,21 +140,12 @@ class View {
             for (const number of this.model.numberGenerator.riverNumbers) {
                 this.p5.strokeWeight(5)
                 this.p5.stroke('black')
-                this.p5.ellipse(number.position.x, number.position.y, Constants.numberCircleSize)
+                this.p5.ellipse(number.position.x, number.position.y, Constants.CIRCLE_SIZE)
                 this.p5.strokeWeight(0)
                 this.p5.stroke(0)
                 this.p5.text(number.num, number.position.x, number.position.y - 6)
             }
         this.p5.pop()
-    }
-
-    updateTimer() {
-        const seconds = Math.floor(this.model.timer.getCurrentMillis() / 1000)
-        const minutes = Math.floor(seconds / 60)
-        const displaySeconds = seconds % 60
-        const leadingZero = displaySeconds < 10 ? "0" : ""
-        const timeText = minutes + ":" + leadingZero + displaySeconds
-        this.timerDisplay.innerHTML = timeText
     }
 
 }
