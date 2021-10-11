@@ -1,5 +1,5 @@
 import p5 from "p5"
-import { Constants } from "../Constants"
+import Constants from "../Constants"
 import { Model } from "../model/Model"
 
 class DebugView {

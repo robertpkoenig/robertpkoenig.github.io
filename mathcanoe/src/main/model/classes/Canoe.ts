@@ -4,7 +4,6 @@ import { River } from "./River"
 import SAT, { Polygon, Vector } from 'sat'
 import Constants from "../../Constants"
 
-
 class Canoe {
 
     river: River
