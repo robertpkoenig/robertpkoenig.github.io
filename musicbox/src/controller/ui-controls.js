@@ -1,7 +1,9 @@
+const metronomeOn = false
+
 function toggleMetronome() {
-    metronome.on = !metronome.on
+    metronomeOn = !metronomeOn
     const metronomeState = document.getElementById('metronome-state')
-    if (metronome.on) {
+    if (metronomeOn) {
         metronomeState.innerHTML = "On"
         metronomeState.style="color: blue"
     }

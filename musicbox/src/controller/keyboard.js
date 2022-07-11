@@ -5,98 +5,98 @@ function keyPressed() {
     switch (key) {
         // Percussion
         case " ":
-            window.samplePlayer.playSound('kick')
-            window.recorder.addHitToSong('kick')
+            playSound('kick')
+            addHitToSong('kick')
             break
         case "g":
-            window.samplePlayer.playSound('snare')
-            window.recorder.addHitToSong('snare')
+            playSound('snare')
+            addHitToSong('snare')
             break
         case "h":
-            window.samplePlayer.playSound('hat')
-            window.recorder.addHitToSong('hat')
+            playSound('hat')
+            addHitToSong('hat')
             break
         case "f":
-            window.samplePlayer.playSound('snap')
-            window.recorder.addHitToSong('snap')
+            playSound('snap')
+            addHitToSong('snap')
             break
         case "d":
-            window.samplePlayer.playSound('clave')
-            window.recorder.addHitToSong('clave')
+            playSound('clave')
+            addHitToSong('clave')
             break
         case "j":
-            window.samplePlayer.playSound('cymbal')
-            window.recorder.addHitToSong('cymbal')
+            playSound('cymbal')
+            addHitToSong('cymbal')
             break       
         case "s":
-            window.samplePlayer.playSound('tom1')
-            window.recorder.addHitToSong('tom1')
+            playSound('tom1')
+            addHitToSong('tom1')
             break
         case "a":
-            window.samplePlayer.playSound('tom2')
-            window.recorder.addHitToSong('tom2')
+            playSound('tom2')
+            addHitToSong('tom2')
             break
 
         // Guitar
         case "y":
-            window.samplePlayer.playSound('pluck1')
-            window.recorder.addHitToSong('pluck1')
+            playSound('pluck1')
+            addHitToSong('pluck1')
             break
         case "u":
-            window.samplePlayer.playSound('pluck2')
-            window.recorder.addHitToSong('pluck2')
+            playSound('pluck2')
+            addHitToSong('pluck2')
             break
         case "i":
-            window.samplePlayer.playSound('pluck3')
-            window.recorder.addHitToSong('pluck3')
+            playSound('pluck3')
+            addHitToSong('pluck3')
             break
         case "o":
-            window.samplePlayer.playSound('slide1')
-            window.recorder.addHitToSong('slide1')
+            playSound('slide1')
+            addHitToSong('slide1')
             break
         case "p":
-            window.samplePlayer.playSound('slide2')
-            window.recorder.addHitToSong('slide2')
+            playSound('slide2')
+            addHitToSong('slide2')
             break
 
         // Keyboard
         case "q":
-            window.samplePlayer.playSound('chord1')
-            window.recorder.addHitToSong('chord1')
+            playSound('chord1')
+            addHitToSong('chord1')
             break
         case "w":
-            window.samplePlayer.playSound('chord2')
-            window.recorder.addHitToSong('chord2')
+            playSound('chord2')
+            addHitToSong('chord2')
             break
         case "e":
-            window.samplePlayer.playSound('chord3')
-            window.recorder.addHitToSong('chord3')
+            playSound('chord3')
+            addHitToSong('chord3')
             break
 
         // Vocal
         case "z":
-            window.samplePlayer.playSound('ugh')
-            window.recorder.addHitToSong('ugh')
+            playSound('ugh')
+            addHitToSong('ugh')
             break
         case "x":
-            window.samplePlayer.playSound('yeah')
-            window.recorder.addHitToSong('yeah')
+            playSound('yeah')
+            addHitToSong('yeah')
             break
         case "c":
-            window.samplePlayer.playSound('agh')
-            window.recorder.addHitToSong('agh')
+            playSound('agh')
+            addHitToSong('agh')
             break
         case "v":
-            window.samplePlayer.playSound('holdup')
-            window.recorder.addHitToSong('holdup')
+            playSound('holdup')
+            addHitToSong('holdup')
             break
         case "b":
-            window.samplePlayer.playSound('damn')
-            window.recorder.addHitToSong('damn')
+            playSound('damn')
+            addHitToSong('damn')
             break
         case "n":
-            window.samplePlayer.playSound('horn')
-            window.recorder.addHitToSong('horn')
+            playSound('horn')
+            addHitToSong('horn')
             break
 
         case "-":

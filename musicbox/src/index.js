@@ -1,10 +1,4 @@
-window.samplePlayer = new SamplePlayer()
-window.clock = new Clock()
 window.song = new Song()
-window.visualizer = new Visualizer()
-window.player = new Player(window.clock, window.song, window.samplePlayer)
-window.recorder = new Recorder(window.clock, window.song)
-window.metronome = new Metronome()
 
 let lightVector
 let zoomOut = false
@@ -20,8 +14,7 @@ function setup() {
     frameRate(32)
     noStroke()
 
-    window.samplePlayer.loadSounds()
-    window.samplePlayer.createSoundsMap()
+    loadSounds()
 
     // This will adjust the camera angle if the screen is too small to accomodate the whole screen
     if (windowHeight < 900) zoomOut = true
@@ -44,12 +37,12 @@ function draw() {
     // Clear the canvas
     background(255)
 
-    if (window.clock.currentFrame.count == 0) { window.recorder.setAllHitsToPlayable() }
-    if (window.metronome.on) window.metronome.playClick()
+    if (currentFrame.count == 0) { setAllHitsToPlayable() }
+    if (metronomeOn) playClick()
 
-    window.visualizer.visualize()
-    window.player.playAllSamplesAtCurrentClockIndex()
-    window.clock.incrementTime()
+    visualize()
+    playAllSamplesAtCurrentClockIndex()
+    incrementTime()
 
 }
 

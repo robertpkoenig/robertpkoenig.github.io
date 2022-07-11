@@ -50,15 +50,15 @@ const TOR_H = 10
 const B_CYL_H = 1000
 
 // Uses P5 WebGL functions to render the 3D animation
-class Visualizer {
+// class Visualizer {
 
-    circleSizes
+//     circleSizes
 
-    visualize() {
+    function visualize() {
 
         push()
 
-            const proportionThroughSong = window.clock.currentFrame.count / Constants.numFramesInSong
+            const proportionThroughSong = currentFrame.count / Constants.numFramesInSong
             const cylinderAngle = TWO_PI * proportionThroughSong
 
             // Transformations for entire canvas reference
@@ -75,7 +75,7 @@ class Visualizer {
     }
 
     // This calls methods to draw the canons and projectiles
-    drawAllSounds(cylinderAngle, proportionThroughSong) {
+    function drawAllSounds(cylinderAngle, proportionThroughSong) {
 
         for (let i = 0; i < window.song.hits.length; i++) {
 
@@ -105,7 +105,7 @@ class Visualizer {
     }
 
     // This is the projectile before it leaves the canon
-    drawProjectileLaunching(totalAngle, canonAngle, level, r, g, b) {
+    function drawProjectileLaunching(totalAngle, canonAngle, level, r, g, b) {
 
         if (totalAngle >= -1 && totalAngle <= 0 || totalAngle >= 5.28) {
             push()
@@ -130,7 +130,7 @@ class Visualizer {
     }
 
     // This is the projectile as it sores through the air
-    drawProjectiles(totalAngle, proportionThroughSong, canonAngle, level, r, g, b) {
+    function drawProjectiles(totalAngle, proportionThroughSong, canonAngle, level, r, g, b) {
 
         push()
         if (totalAngle >= 0 && totalAngle <= 2 || totalAngle <= -4.28) {
@@ -155,7 +155,7 @@ class Visualizer {
 
     }
 
-    drawCanons(boxAngle, level) {
+    function drawCanons(boxAngle, level) {
 
         push()
         const x = -BOX_DIST_FROM_CENTER * cos(boxAngle)
@@ -173,7 +173,7 @@ class Visualizer {
 
     }
 
-    drawCylinder(cylinderAngle) {
+    function drawCylinder(cylinderAngle) {
         rotateZ(cylinderAngle)
         push()
         rotateX(0.5 * PI)
@@ -182,7 +182,7 @@ class Visualizer {
         pop()
     }
 
-    drawPipes() {
+    function drawPipes() {
             // These are the pipes into which projectiles dissappear
             push()
                 translate(0, ARC_R, 0)
@@ -209,7 +209,7 @@ class Visualizer {
             pop()
     }
 
-    drawSuspendors(cylinderAngle) {
+    function drawSuspendors(cylinderAngle) {
 
                 // Suspender left
                 push()
@@ -244,4 +244,4 @@ class Visualizer {
 
     }
 
-}
+// }
