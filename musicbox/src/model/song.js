@@ -7,8 +7,8 @@ class Song {
     undoStack
 
     constructor() {
-        this.hits = new Array(Constants.numFramesInSong)
-        for (let i = 0 ; i < Constants.numFramesInSong ; i++) {
+        this.hits = new Array(NUM_FRAMES_IN_SONG)
+        for (let i = 0 ; i < NUM_FRAMES_IN_SONG ; i++) {
             this.hits[i] = []
         }
         this.undoStack = []

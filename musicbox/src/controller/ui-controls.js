@@ -1,4 +1,4 @@
-const metronomeOn = false
+let metronomeOn = false
 
 function toggleMetronome() {
     metronomeOn = !metronomeOn

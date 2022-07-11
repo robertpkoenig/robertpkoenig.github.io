@@ -58,7 +58,7 @@ const B_CYL_H = 1000
 
         push()
 
-            const proportionThroughSong = currentFrame.count / Constants.numFramesInSong
+            const proportionThroughSong = currentFrame.count / NUM_FRAMES_IN_SONG
             const cylinderAngle = TWO_PI * proportionThroughSong
 
             // Transformations for entire canvas reference

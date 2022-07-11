@@ -49,9 +49,9 @@
   
   /* Rounded sliders */
   .slider.round {
-    border-radius: 34px;
+    border-RADIUS: 34px;
   }
   
   .slider.round:before {
-    border-radius: 50%;
+    border-RADIUS: 50%;
   }

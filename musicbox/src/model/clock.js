@@ -3,12 +3,12 @@
 // which frame the animation is currently on, and what the number of the most recent quarter
 // note was. Tracking quarter notes is part of feature that remains under development.
 
-const currentFrame = new WrapAroundCounter(Constants.numFramesInSong)
-const quarterNoteIndex = new WrapAroundCounter(Constants.BEATS_IN_BAR * Constants.barsPerSong)
+const currentFrame = new WrapAroundCounter(NUM_FRAMES_IN_SONG)
+const quarterNoteIndex = new WrapAroundCounter(BEATS_IN_BAR * BARS_PER_SONG)
 
 function incrementTime() {
 
-    if (currentFrame.count % Constants.framesPerBeat == 0) {
+    if (currentFrame.count % FRAMES_PER_BEAT == 0) {
         quarterNoteIndex.incrementAndWrap()
     }
 

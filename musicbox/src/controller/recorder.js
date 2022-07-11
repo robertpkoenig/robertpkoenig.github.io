@@ -8,11 +8,11 @@ function addHitToSong(name) {
     // get the slot that is the closest to this frame
     // instead using modulo
     // if the modulo value is zero or one, using the current 16th note, if it is 2 or 3, using the one higher
-    // let index = Math.round(map(window.clock.currentFrame.count, 0, Constants.numFramesInSong - 1,
-    //                     0, Constants.maxNumHitsPerTrack - 1))
+    // let index = Math.round(map(window.clock.currentFrame.count, 0, NUM_FRAMES_IN_SONG - 1,
+    //                     0, MAX_NUM_HITS_PER_TRACK - 1))
     // let index = window.clock.sixteenthNoteIndex.count
     // // move to the higher 16th note index if the frame count is closer to that higher one
-    // // if (window.clock.currentFrame.count % Constants.framesPerHit > 1) index++
+    // // if (window.clock.currentFrame.count % FRAMES_PER_HIT > 1) index++
     // console.log("**HIT** quarter note: " + window.clock.quarterNoteIndex.count + 
     //             " sixteenthNote: " + window.clock.sixteenthNoteIndex.count +
     //             " slot index: " + index);
