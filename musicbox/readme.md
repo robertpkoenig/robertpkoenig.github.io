@@ -24,5 +24,5 @@ musicbox
 │   ├── view                    // use p5 to drive webGL
 │   └── index.js                // application entry point, with p5 setup and central draw loop
 ├── styles                      // css
-├── drum-controller.ino         // c++ code for the optional hardware controller
+└── drum-controller.ino         // c++ code for the optional hardware controller
 ```
