@@ -2,7 +2,9 @@ name: Run Minileagues Script
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Run every 5 minutes
+    # Run every 5 minutes between 7am-9pm UTC (8am-10pm BST)
+    # BST is UTC+1, so 8am BST = 7am UTC, 10pm BST = 9pm UTC
+    - cron: '*/5 7-21 * * *'
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
