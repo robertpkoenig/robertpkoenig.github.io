@@ -7,25 +7,78 @@ import "jsr:@std/dotenv/load";
 export async function saveResultsToJson(
   results: BoxLeagueResults,
 ): Promise<void> {
-  const apiKey = Deno.env.get("JSON_BIN_API_KEY") || "";
-  if (apiKey === "") throw new Error("No api key found");
+  // const apiKey = Deno.env.get("JSON_BIN_API_KEY") || "";
+  // if (apiKey === "") throw new Error("No api key found");
 
-  const url = `https://api.jsonstorage.net/v1/json/7eb003a0-7da0-4e36-b065-91deb9f1797c/5a1bae49-dfac-4850-b0bf-c91d06c5898a?apiKey=${apiKey}`;
+  const url = `https://setget.io/api/set`;
 
   const response = await fetch(url, {
-    method: "PUT",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Master-Key": apiKey,
     },
     body: JSON.stringify(results),
   });
 
   if (!response.ok) {
     throw new Error(
-      `Failed to save to JSONBin: ${response.status} ${response.statusText}`,
+      `Failed to save to setget: ${response.status} ${response.statusText}`,
     );
   }
 
-  console.log(`Results saved to jsonstore.net`);
+  console.log(`Results saved to setget.io`);
+}
+
+const awards = [
+  {
+    Title: "League One Winner",
+    Recipients: ["Peppe"],
+  },
+  {
+    Title: "Most Points",
+    Recipients: ["Andy King"],
+  },
+  {
+    Title: "All Games Played",
+    Recipients: [
+      "Andy King",
+      "Max Kuhnke",
+      "Chris Lumb",
+      "Craig Watt",
+      "Sikandar Soin",
+      "Diego Perez-Guillermo",
+      "Julian Hartley",
+      "Elliot Lamb",
+      " Scott Jordan",
+      "Heath Dyer",
+      "Mark Thornton-Smith",
+    ],
+  },
+];
+
+export async function saveAwards(): Promise<void> {
+  // const apiKey = Deno.env.get("JSON_BIN_API_KEY") || "";
+  // if (apiKey === "") throw new Error("No api key found");
+
+  const url = `https://setget.io/api/set`;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      key: "grange-minileague-awards",
+      expireAfter: 86400,
+      content: awards,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to save to setget: ${response.status} ${response.statusText}`,
+    );
+  }
+
+  console.log(`Awards saved to setget.io`);
 }

@@ -26,16 +26,20 @@ interface Box {
 }
 
 export interface BoxLeagueResults {
-  title: string;
-  period: string;
-  boxes: Box[];
-  pointsSystem: {
-    pointsPerGameWon: number;
-    pointsForMatchWin: number;
-    pointsForPlayingMatch: number;
-    pointsForPlayingAllMatches: number;
+  key: string;
+  expireAfter: number;
+  content: {
+    title: string;
+    period: string;
+    boxes: Box[];
+    pointsSystem: {
+      pointsPerGameWon: number;
+      pointsForMatchWin: number;
+      pointsForPlayingMatch: number;
+      pointsForPlayingAllMatches: number;
+    };
+    fetchedAt: string;
   };
-  fetchedAt: string;
 }
 
 class BoxLeagueScraper {
@@ -233,11 +237,15 @@ class BoxLeagueScraper {
     const boxes = this.extractBoxes();
 
     return {
-      title,
-      period,
-      boxes,
-      pointsSystem,
-      fetchedAt: new Date().toISOString(),
+      key: "grange-minileagues",
+      expireAfter: 604800,
+      content: {
+        title,
+        period,
+        boxes,
+        pointsSystem,
+        fetchedAt: new Date().toISOString(),
+      },
     };
   }
 }
