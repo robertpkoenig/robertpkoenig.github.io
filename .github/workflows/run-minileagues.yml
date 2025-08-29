@@ -27,16 +27,4 @@ jobs:
       - name: Run minileagues script
         env:
           JSON_BIN_API_KEY: "59af19ae-d093-4449-874d-b23bb3ad190e"
-        run: deno run --allow-net --allow-read --allow-write minileagues/src/index.ts
-
-      - name: Commit and push if changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update minileagues data - $(date)"
-            git push
-          fi
+        run: deno run --allow-net --allow-read --allow-write --allow-env minileagues/src/index.ts
