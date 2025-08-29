@@ -1,7 +1,5 @@
-import {
-  scrapeBoxLeagueFromUrl,
-  saveResultsToJson,
-} from "./extract-table.ts";
+import { scrapeBoxLeagueFromUrl } from "./extract-table.ts";
+import { saveResultsToJson } from "./save.ts";
 
 scrapeBoxLeagueFromUrl("https://www.sportyhq.com/club/box/view/242")
   .then((results) => {

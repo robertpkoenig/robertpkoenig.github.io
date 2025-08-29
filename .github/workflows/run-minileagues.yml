@@ -4,8 +4,8 @@ on:
   schedule:
     # Run every 5 minutes between 7am-9pm UTC (8am-10pm BST)
     # BST is UTC+1, so 8am BST = 7am UTC, 10pm BST = 9pm UTC
-    - cron: '*/5 7-21 * * *'
-  workflow_dispatch:  # Allow manual trigger
+    - cron: "*/5 7-21 * * *"
+  workflow_dispatch: # Allow manual trigger
 
 permissions:
   contents: write
@@ -13,20 +13,22 @@ permissions:
 jobs:
   run-script:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Setup Deno
         uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
           cache: true
-      
+
       - name: Run minileagues script
+        env:
+          JSON_BIN_API_KEY: "59af19ae-d093-4449-874d-b23bb3ad190e"
         run: deno run --allow-net --allow-read --allow-write minileagues/src/index.ts
-        
+
       - name: Commit and push if changes
         run: |
           git config --local user.email "action@github.com"

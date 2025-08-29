@@ -25,7 +25,7 @@ interface Box {
   games: GameResult[];
 }
 
-interface BoxLeagueResults {
+export interface BoxLeagueResults {
   title: string;
   period: string;
   boxes: Box[];
@@ -273,15 +273,4 @@ export async function scrapeBoxLeagueFromUrl(
 export function scrapeBoxLeagueFromHtml(html: string): BoxLeagueResults {
   const scraper = new BoxLeagueScraper(html);
   return scraper.scrapeResults();
-}
-
-/**
- * Utility function to save results to JSON file (Deno version)
- */
-export async function saveResultsToJson(
-  results: BoxLeagueResults,
-  filename: string = "box_league_results.json",
-): Promise<void> {
-  await Deno.writeTextFile(filename, JSON.stringify(results, null, 2));
-  console.log(`Results saved to ${filename}`);
 }
