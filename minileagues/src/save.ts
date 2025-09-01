@@ -2,18 +2,15 @@ import { BoxLeagueResults } from "./extract-table.ts";
 import "jsr:@std/dotenv/load";
 
 /**
- * Utility function to save results to JSONBin.io
+ * Utility function to save results to minileague API
  */
 export async function saveResultsToJson(
   results: BoxLeagueResults,
 ): Promise<void> {
-  // const apiKey = Deno.env.get("JSON_BIN_API_KEY") || "";
-  // if (apiKey === "") throw new Error("No api key found");
-
-  const url = `https://setget.io/api/set`;
+  const url = `https://minileague-ynsesyeex2hf.robertpkoenig.deno.net/results`;
 
   const response = await fetch(url, {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
@@ -22,11 +19,11 @@ export async function saveResultsToJson(
 
   if (!response.ok) {
     throw new Error(
-      `Failed to save to setget: ${response.status} ${response.statusText}`,
+      `Failed to save results: ${response.status} ${response.statusText}`,
     );
   }
 
-  console.log(`Results saved to setget.io`);
+  console.log(`Results saved to minileague API`);
 }
 
 const awards = [
@@ -36,49 +33,44 @@ const awards = [
   },
   {
     Title: "Most Points",
-    Recipients: ["Andy King"],
+    Recipients: ["Gordon Cowie [28]"],
   },
   {
     Title: "All Games Played",
     Recipients: [
+      "Peppe",
+      "Scott Jordan",
+      "Julian Hartley",
+      "Andrew Noble",
+      "David Harvey",
       "Andy King",
-      "Max Kuhnke",
       "Chris Lumb",
       "Craig Watt",
       "Sikandar Soin",
-      "Diego Perez-Guillermo",
-      "Julian Hartley",
-      "Elliot Lamb",
-      " Scott Jordan",
-      "Heath Dyer",
-      "Mark Thornton-Smith",
+      "Scott Jordan",
+      "Greg Edwards",
+      "Andy King",
+      "Sergio G. Calvaresi",
     ],
   },
 ];
 
 export async function saveAwards(): Promise<void> {
-  // const apiKey = Deno.env.get("JSON_BIN_API_KEY") || "";
-  // if (apiKey === "") throw new Error("No api key found");
-
-  const url = `https://setget.io/api/set`;
+  const url = `https://minileague-ynsesyeex2hf.robertpkoenig.deno.net/awards`;
 
   const response = await fetch(url, {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      key: "grange-minileague-awards",
-      expireAfter: 86400,
-      content: awards,
-    }),
+    body: JSON.stringify(awards),
   });
 
   if (!response.ok) {
     throw new Error(
-      `Failed to save to setget: ${response.status} ${response.statusText}`,
+      `Failed to save awards: ${response.status} ${response.statusText}`,
     );
   }
 
-  console.log(`Awards saved to setget.io`);
+  console.log(`Awards saved to minileague API`);
 }
