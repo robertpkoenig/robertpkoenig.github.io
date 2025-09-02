@@ -7,14 +7,14 @@ import "jsr:@std/dotenv/load";
 export async function saveResultsToJson(
   results: BoxLeagueResults,
 ): Promise<void> {
-  const url = `https://minileague-ynsesyeex2hf.robertpkoenig.deno.net/results`;
+  const url = `https://minileague.robertpkoenig.deno.net/results`;
 
   const response = await fetch(url, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(results),
+    body: JSON.stringify(results.content),
   });
 
   if (!response.ok) {
@@ -56,7 +56,7 @@ const awards = [
 ];
 
 export async function saveAwards(): Promise<void> {
-  const url = `https://minileague-ynsesyeex2hf.robertpkoenig.deno.net/awards`;
+  const url = `https://minileague.robertpkoenig.deno.net/awards`;
 
   const response = await fetch(url, {
     method: "PUT",
